@@ -1,0 +1,849 @@
+---
+import { getTranslations, type Lang, languages } from "../../i18n";
+import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
+
+export async function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang: lang.code },
+  }));
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang as Lang);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+  </head>
+  <body class="bg-gray-50">
+    <LanguageSwitcher currentLang={lang as Lang} />
+
+    <div class="page max-w-[210mm] min-h-[297mm] mx-auto bg-white shadow-lg">
+      <!-- Header -->
+      <div
+        class="bg-gradient-to-r from-slate-800 to-slate-700 text-white header-padding animate-slide-in"
+      >
+        <div
+          class="header-flex flex flex-col gap-4 sm:gap-6 md:flex-row md:items-center md:justify-between"
+        >
+          <div class="text-center md:text-left">
+            <h1
+              class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 tracking-tight"
+            >
+              {t.header.title}
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl text-slate-200">
+              {t.header.subtitle}
+            </p>
+          </div>
+          <div class="self-center md:self-auto">
+            <img
+              src="/ricardo-profile.jpg"
+              alt={t.header.portraitAlt}
+              class="profile-photo"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0">
+        <!-- LEFT COLUMN -->
+        <div
+          class="bg-slate-50 left-column-padding border-r-0 md:border-r border-slate-200 border-b md:border-b-0"
+        >
+          <!-- Kontakt -->
+          <div class="section-item contact-section">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider section-title-spacing border-b-2 border-blue-600"
+            >
+              {t.sections.contact}
+            </h2>
+            <div class="text-xs contact-content text-slate-700 leading-relaxed">
+              <p>{t.contact.address}</p>
+              <p>{t.contact.city}</p>
+              <p class="break-all">{t.contact.email}</p>
+              <p>{t.contact.phone}</p>
+              <p>
+                <a
+                  href={t.contact.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all"
+                >
+                  {t.contact.website}
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/ricardo-voegeli/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all"
+                >
+                  {t.contact.linkedin}
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://github.com/risuiar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all"
+                >
+                  {t.contact.github}
+                </a>
+              </p>
+              <p class="mt-3">
+                <a
+                  href={t.contact.extendedCvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
+                  download
+                >
+                  {t.contact.extendedCv}
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlights -->
+          <div class="section-item section-spacing">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.highlights}
+            </h2>
+            <div class="space-y-2 text-xs text-slate-700">
+              {
+                t.highlights.map((highlight) => (
+                  <div class="flex items-start">
+                    <span class="text-blue-600 mr-2">●</span>
+                    <span>{highlight}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Technische Expertise -->
+          <div class="section-item section-spacing">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.technicalExpertise}
+            </h2>
+            <div class="space-y-3 text-xs text-slate-700 leading-relaxed">
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.frontend}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >React</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >HTML5</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >CSS3</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >Tailwind</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                    >MUI</span
+                  >
+                </div>
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.state}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
+                    >Redux</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
+                    >React Query</span
+                  >
+                </div>
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.tools}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                    >Webpack</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                    >Vite</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                    >Git</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                    >CI/CD</span
+                  >
+                </div>
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.testing}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                    >Cypress</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                    >Jest</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                    >Playwright</span
+                  >
+                </div>
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.backend}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                    >PHP</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                    >Node.js</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                    >Laravel</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                    >Symfony</span
+                  >
+                </div>
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.technicalExpertise.databases}</span
+                >
+                <div class="flex flex-wrap gap-1 mt-1">
+                  <span
+                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                    >MySQL</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                    >PostgreSQL</span
+                  >
+                  <span
+                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                    >Redis</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sprachen -->
+          <div class="section-item">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.languages}
+            </h2>
+            <div class="space-y-2 text-xs text-slate-700">
+              <div class="flex justify-between">
+                <span>{t.languages.german}</span>
+                <span class="text-slate-500">B2</span>
+              </div>
+              <div class="flex justify-between">
+                <span>{t.languages.english}</span>
+                <span class="text-slate-500">B1</span>
+              </div>
+              <div class="flex justify-between">
+                <span>{t.languages.spanish}</span>
+                <span class="text-slate-500">{t.languages.native}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>{t.languages.portuguese}</span>
+                <span class="text-slate-500">B1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-column-padding">
+          <!-- Über mich -->
+          <div class="section-item section-spacing">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.aboutMe}
+            </h2>
+            <p class="text-xs text-slate-700 leading-relaxed">
+              {t.aboutMe.paragraph1}<br />
+              {t.aboutMe.paragraph2}
+            </p>
+          </div>
+
+          <!-- Kurzprofil -->
+          <div class="section-item section-spacing">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.shortProfile}
+            </h2>
+            <div class="text-xs text-slate-700 leading-relaxed space-y-1">
+              {
+                t.shortProfile.items.map((item) => (
+                  <div class="flex items-start">
+                    <span class="text-blue-600 mr-2">●</span>
+                    <span>{item}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Berufserfahrung -->
+          <div class="section-spacing">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.workExperience}
+            </h2>
+
+            <!-- Job 1 -->
+            <div class="job-item section-item">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xs font-bold text-slate-800">
+                  {t.workExperience.freelance.title}
+                </h3>
+                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                  >{t.workExperience.freelance.period}</span
+                >
+              </div>
+              <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+                <p>
+                  {t.workExperience.freelance.description1}
+                </p>
+                <p>
+                  {t.workExperience.freelance.description2}
+                </p>
+                <div class="pl-3 border-l-2 border-blue-200 space-y-1">
+                  <p class="font-semibold text-slate-800">
+                    {t.workExperience.freelance.mainProject}
+                  </p>
+                  <ul class="space-y-1 list-none">
+                    {
+                      t.workExperience.freelance.mainProjectItems.map(
+                        (item) => (
+                          <li class="flex items-start">
+                            <span class="text-blue-600 mr-2 text-[8px] mt-1">
+                              ▸
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        )
+                      )
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job-item section-item">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xs font-bold text-slate-800">
+                  {t.workExperience.skycell.title}
+                </h3>
+                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                  >{t.workExperience.skycell.period}</span
+                >
+              </div>
+              <ul
+                class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
+              >
+                {
+                  t.workExperience.skycell.items.map((item) => (
+                    <li class="flex items-start">
+                      <span class="text-blue-600 mr-2 text-[8px] mt-1">▸</span>
+                      <span set:html={item} />
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job-item section-item">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xs font-bold text-slate-800">
+                  {t.workExperience.navyboot.title}
+                </h3>
+                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                  >{t.workExperience.navyboot.period}</span
+                >
+              </div>
+              <ul
+                class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
+              >
+                {
+                  t.workExperience.navyboot.items.map((item) => (
+                    <li class="flex items-start">
+                      <span class="text-blue-600 mr-2 text-[8px] mt-1">▸</span>
+                      <span set:html={item} />
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="section-item">
+              <h3 class="text-xs font-bold text-slate-800 mb-2">
+                {t.workExperience.olderExperience.title}
+              </h3>
+              <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+                <div>
+                  <span class="font-semibold text-slate-800"
+                    >{t.workExperience.olderExperience.epets}</span
+                  >
+                  <span> {t.workExperience.olderExperience.epetsDesc}</span>
+                </div>
+                <div>
+                  <span class="font-semibold text-slate-800"
+                    >{t.workExperience.olderExperience.car4you}</span
+                  >
+                  <span> {t.workExperience.olderExperience.car4youDesc}</span>
+                </div>
+                <div>
+                  <span class="font-semibold text-slate-800"
+                    >{t.workExperience.olderExperience.surfkitchen}</span
+                  >
+                  <span>
+                    {t.workExperience.olderExperience.surfkitchenDesc}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ausbildung -->
+          <div class="section-item">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+            >
+              {t.sections.education}
+            </h2>
+            <div class="space-y-2 text-xs text-slate-700">
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.education.casAdvanced}</span
+                >
+                <span class="text-slate-500"
+                  >{t.education.casAdvancedPeriod}</span
+                >
+              </div>
+              <div>
+                <span class="font-semibold text-slate-800"
+                  >{t.education.cas}</span
+                >
+                <span class="text-slate-500">{t.education.casPeriod}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style is:global>
+      :root {
+        --spacing-xs: 0.5rem; /* 8px - móvil pequeño */
+        --spacing-sm: 0.75rem; /* 12px - móvil */
+        --spacing-md: 1rem; /* 16px - móvil/tablet */
+        --spacing-lg: 1.5rem; /* 24px - tablet */
+        --spacing-xl: 2rem; /* 32px - desktop */
+        --spacing-2xl: 2.5rem; /* 40px - desktop */
+
+        --padding-page-mobile: var(--spacing-sm);
+        --padding-page-tablet: var(--spacing-md);
+        --padding-page-desktop: var(--spacing-2xl);
+
+        --padding-section-mobile: var(--spacing-xs);
+        --padding-section-tablet: var(--spacing-sm);
+        --padding-section-desktop: var(--spacing-md);
+
+        --padding-contact-mobile: 0.25rem; /* 4px - muy pequeño en móvil */
+        --padding-contact-tablet: var(--spacing-xs);
+        --padding-contact-desktop: var(--spacing-sm);
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .animate-slide-in {
+        animation: slideIn 0.8s ease-out forwards;
+      }
+
+      .section-item {
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .section-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .section-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .section-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .section-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .section-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .skill-tag {
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+        object-fit: cover;
+        border: 4px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        background: #fff;
+      }
+
+      @media (min-width: 640px) {
+        .profile-photo {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .profile-photo {
+          width: 140px;
+          height: 140px;
+        }
+      }
+
+      .section-title {
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        transition: width 0.6s ease;
+      }
+
+      .section-title.active::after {
+        width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        .page {
+          max-width: 100%;
+          margin: 0;
+          box-shadow: none;
+          min-height: auto;
+        }
+
+        body {
+          background: white;
+        }
+
+        .section-item {
+          margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+          font-size: 11px;
+          padding: 4px 8px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .page {
+          margin: 1rem auto;
+        }
+      }
+
+      /* Spacing utilities using CSS variables */
+      .header-padding {
+        padding: var(--spacing-md) var(--padding-page-mobile);
+      }
+
+      @media (min-width: 640px) {
+        .header-padding {
+          padding: var(--spacing-lg) var(--padding-page-tablet);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .header-padding {
+          padding: var(--padding-page-desktop) var(--padding-page-desktop);
+        }
+      }
+
+      .left-column-padding,
+      .right-column-padding {
+        padding: var(--padding-section-mobile);
+      }
+
+      @media (min-width: 640px) {
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-section-tablet);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-section-desktop);
+        }
+      }
+
+      .contact-section {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .contact-content {
+        padding-top: var(--padding-contact-mobile);
+      }
+
+      @media (min-width: 640px) {
+        .contact-content {
+          padding-top: var(--padding-contact-tablet);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .contact-content {
+          padding-top: var(--padding-contact-desktop);
+        }
+        .contact-section {
+          margin-bottom: var(--spacing-2xl);
+        }
+      }
+
+      .section-spacing {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      @media (min-width: 768px) {
+        .section-spacing {
+          margin-bottom: var(--spacing-2xl);
+        }
+      }
+
+      .job-item {
+        margin-bottom: var(--spacing-md);
+      }
+
+      @media (min-width: 768px) {
+        .job-item {
+          margin-bottom: var(--spacing-xl);
+        }
+      }
+
+      .section-title-spacing {
+        margin-bottom: var(--spacing-sm);
+        padding-bottom: var(--spacing-xs);
+      }
+
+      @media (min-width: 768px) {
+        .section-title-spacing {
+          margin-bottom: var(--spacing-md);
+          padding-bottom: var(--spacing-xs);
+        }
+      }
+
+      @media print {
+        body {
+          background: white !important;
+        }
+
+        .page {
+          width: 210mm !important;
+          min-height: 297mm !important;
+          box-shadow: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .page > .grid {
+          display: grid !important;
+          grid-template-columns: 280px 1fr !important;
+          gap: 0 !important;
+        }
+
+        .left-column-padding {
+          border-right: 1px solid #e2e8f0 !important;
+        }
+
+        .header-padding,
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-page-desktop) !important;
+        }
+
+        .right-column-padding {
+          border-left: none !important;
+        }
+
+        .animate-fade-in,
+        .animate-slide-in,
+        .section-item {
+          animation: none !important;
+          opacity: 1 !important;
+        }
+
+        .profile-photo {
+          border-color: #fff;
+          box-shadow: none;
+          margin-left: 24px;
+        }
+
+        .header-flex {
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+        }
+
+        .grid .section-item,
+        .contact-section,
+        .job-item {
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        .skill-tag:hover {
+          transform: none !important;
+          box-shadow: none !important;
+        }
+
+        /* Avoid splitting important blocks across pages */
+        h1,
+        h2,
+        h3,
+        .section,
+        .left,
+        .right,
+        .container {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .page {
+          page-break-inside: avoid;
+        }
+
+        h2 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+
+        .container {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        @page {
+          margin: 18mm 15mm;
+        }
+      }
+    </style>
+  </body>
+</html>
