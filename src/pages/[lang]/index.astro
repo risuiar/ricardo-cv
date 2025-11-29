@@ -866,51 +866,82 @@ const contactData = getContactData(false); // Start with safe data
         PUBLIC_CONTACT_PHONE: import.meta.env.PUBLIC_CONTACT_PHONE || "",
         PUBLIC_SECRET_KEY: import.meta.env.PUBLIC_SECRET_KEY || "",
       }}
+      is:inline
     >
       // Client-side security check for static pages
       (function () {
-        const SECRET_KEY = PUBLIC_SECRET_KEY;
+        // Store variables in local scope to ensure they're available
+        const SECRET_KEY =
+          typeof PUBLIC_SECRET_KEY !== "undefined" ? PUBLIC_SECRET_KEY : "";
+        const CONTACT_ADDRESS =
+          typeof PUBLIC_CONTACT_ADDRESS !== "undefined"
+            ? PUBLIC_CONTACT_ADDRESS
+            : "";
+        const CONTACT_CITY =
+          typeof PUBLIC_CONTACT_CITY !== "undefined" ? PUBLIC_CONTACT_CITY : "";
+        const CONTACT_EMAIL =
+          typeof PUBLIC_CONTACT_EMAIL !== "undefined"
+            ? PUBLIC_CONTACT_EMAIL
+            : "";
+        const CONTACT_PHONE =
+          typeof PUBLIC_CONTACT_PHONE !== "undefined"
+            ? PUBLIC_CONTACT_PHONE
+            : "";
 
-        if (!SECRET_KEY) {
-          return; // No key configured, keep safe data
+        function checkKey() {
+          if (!SECRET_KEY) {
+            return; // No key configured, keep safe data
+          }
+
+          // Get key from URL
+          const urlParams = new URLSearchParams(window.location.search);
+          const keyFromUrl = urlParams.get("key");
+
+          if (!keyFromUrl) {
+            return; // No key in URL, keep safe data
+          }
+
+          if (keyFromUrl.trim() !== SECRET_KEY.trim()) {
+            return; // Invalid key, keep safe data
+          }
+
+          // Valid key - show full contact information
+          const addressEl = document.getElementById("contact-address");
+          const cityEl = document.getElementById("contact-city");
+          const emailEl = document.getElementById("contact-email");
+          const phoneEl = document.getElementById("contact-phone");
+          const cvLinkEl = document.getElementById("extended-cv-link");
+
+          // Update with full data
+          if (addressEl && CONTACT_ADDRESS) {
+            addressEl.textContent = CONTACT_ADDRESS;
+            addressEl.style.display = "block";
+          }
+
+          if (cityEl && CONTACT_CITY) {
+            cityEl.textContent = CONTACT_CITY;
+          }
+
+          if (emailEl && CONTACT_EMAIL) {
+            emailEl.textContent = CONTACT_EMAIL;
+          }
+
+          if (phoneEl && CONTACT_PHONE) {
+            phoneEl.textContent = CONTACT_PHONE;
+            phoneEl.style.display = "block";
+          }
+
+          if (cvLinkEl) {
+            cvLinkEl.style.display = "block";
+          }
         }
 
-        // Get key from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const keyFromUrl = urlParams.get("key");
-
-        if (!keyFromUrl || keyFromUrl.trim() !== SECRET_KEY.trim()) {
-          return; // Invalid key, keep safe data
-        }
-
-        // Valid key - show full contact information
-        const addressEl = document.getElementById("contact-address");
-        const cityEl = document.getElementById("contact-city");
-        const emailEl = document.getElementById("contact-email");
-        const phoneEl = document.getElementById("contact-phone");
-        const cvLinkEl = document.getElementById("extended-cv-link");
-
-        // Update with full data
-        if (addressEl && PUBLIC_CONTACT_ADDRESS) {
-          addressEl.textContent = PUBLIC_CONTACT_ADDRESS;
-          addressEl.style.display = "block";
-        }
-
-        if (cityEl && PUBLIC_CONTACT_CITY) {
-          cityEl.textContent = PUBLIC_CONTACT_CITY;
-        }
-
-        if (emailEl && PUBLIC_CONTACT_EMAIL) {
-          emailEl.textContent = PUBLIC_CONTACT_EMAIL;
-        }
-
-        if (phoneEl && PUBLIC_CONTACT_PHONE) {
-          phoneEl.textContent = PUBLIC_CONTACT_PHONE;
-          phoneEl.style.display = "block";
-        }
-
-        if (cvLinkEl) {
-          cvLinkEl.style.display = "block";
+        // Wait for DOM to be ready
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", checkKey);
+        } else {
+          // DOM already ready, run immediately
+          checkKey();
         }
       })();
     </script>
