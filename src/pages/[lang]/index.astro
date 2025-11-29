@@ -16,10 +16,12 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const t = getTranslations(lang as Lang);
 
-// Check for security key in URL
+// Check for security key in URL using hash comparison
 const url = Astro.url;
 const urlParams = url.searchParams;
-const hasKey = urlParams.get("key") === "contact2026";
+const keyFromUrl = urlParams.get("key") || "";
+const { hasValidKey } = await import("../../utils/security");
+const hasKey = hasValidKey(keyFromUrl);
 
 // Get contact data based on security
 const contactData = getContactData(hasKey);
