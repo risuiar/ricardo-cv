@@ -16,15 +16,10 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const t = getTranslations(lang as Lang);
 
-// Check for security key in URL using hash comparison
-const url = Astro.url;
-const urlParams = url.searchParams;
-const keyFromUrl = urlParams.get("key") || "";
-const { hasValidKey } = await import("../../utils/security");
-const hasKey = hasValidKey(keyFromUrl);
-
-// Get contact data based on security
-const contactData = getContactData(hasKey);
+// For static pages, we'll check the key on the client side
+// Server-side: always show safe data
+// Client-side: JavaScript will check the key and show full data if valid
+const contactData = getContactData(false); // Start with safe data
 ---
 
 <!doctype html>
@@ -84,11 +79,14 @@ const contactData = getContactData(hasKey);
             >
               {t.sections.contact}
             </h2>
-            <div class="text-xs contact-content text-slate-700 leading-relaxed">
-              {contactData.address && <p>{contactData.address}</p>}
-              <p>{contactData.city}</p>
-              <p class="break-all">{contactData.email}</p>
-              {contactData.phone && <p>{contactData.phone}</p>}
+            <div
+              class="text-xs contact-content text-slate-700 leading-relaxed"
+              id="contact-info"
+            >
+              <p id="contact-address" style="display: none;"></p>
+              <p id="contact-city">{contactData.city}</p>
+              <p class="break-all" id="contact-email">{contactData.email}</p>
+              <p id="contact-phone" style="display: none;"></p>
               <p>
                 <a
                   href={t.contact.websiteUrl}
@@ -119,21 +117,17 @@ const contactData = getContactData(hasKey);
                   {t.contact.github}
                 </a>
               </p>
-              {
-                hasKey && (
-                  <p class="mt-3">
-                    <a
-                      href={t.contact.extendedCvUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
-                      download
-                    >
-                      {t.contact.extendedCv}
-                    </a>
-                  </p>
-                )
-              }
+              <p class="mt-3" id="extended-cv-link" style="display: none;">
+                <a
+                  href={t.contact.extendedCvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
+                  download
+                >
+                  {t.contact.extendedCv}
+                </a>
+              </p>
             </div>
           </div>
 
@@ -864,5 +858,61 @@ const contactData = getContactData(hasKey);
         }
       }
     </style>
+    <script
+      define:vars={{
+        PUBLIC_CONTACT_ADDRESS: import.meta.env.PUBLIC_CONTACT_ADDRESS || "",
+        PUBLIC_CONTACT_CITY: import.meta.env.PUBLIC_CONTACT_CITY || "",
+        PUBLIC_CONTACT_EMAIL: import.meta.env.PUBLIC_CONTACT_EMAIL || "",
+        PUBLIC_CONTACT_PHONE: import.meta.env.PUBLIC_CONTACT_PHONE || "",
+        PUBLIC_SECRET_KEY: import.meta.env.PUBLIC_SECRET_KEY || "",
+      }}
+    >
+      // Client-side security check for static pages
+      (function () {
+        const SECRET_KEY = PUBLIC_SECRET_KEY;
+
+        if (!SECRET_KEY) {
+          return; // No key configured, keep safe data
+        }
+
+        // Get key from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const keyFromUrl = urlParams.get("key");
+
+        if (!keyFromUrl || keyFromUrl.trim() !== SECRET_KEY.trim()) {
+          return; // Invalid key, keep safe data
+        }
+
+        // Valid key - show full contact information
+        const addressEl = document.getElementById("contact-address");
+        const cityEl = document.getElementById("contact-city");
+        const emailEl = document.getElementById("contact-email");
+        const phoneEl = document.getElementById("contact-phone");
+        const cvLinkEl = document.getElementById("extended-cv-link");
+
+        // Update with full data
+        if (addressEl && PUBLIC_CONTACT_ADDRESS) {
+          addressEl.textContent = PUBLIC_CONTACT_ADDRESS;
+          addressEl.style.display = "block";
+        }
+
+        if (cityEl && PUBLIC_CONTACT_CITY) {
+          cityEl.textContent = PUBLIC_CONTACT_CITY;
+        }
+
+        if (emailEl && PUBLIC_CONTACT_EMAIL) {
+          emailEl.textContent = PUBLIC_CONTACT_EMAIL;
+        }
+
+        if (phoneEl && PUBLIC_CONTACT_PHONE) {
+          phoneEl.textContent = PUBLIC_CONTACT_PHONE;
+          phoneEl.style.display = "block";
+        }
+
+        if (cvLinkEl) {
+          cvLinkEl.style.display = "block";
+        }
+      })();
+    </script>
   </body>
 </html>
