@@ -1,6 +1,11 @@
 ---
 import { getTranslations, type Lang, languages } from "../../i18n";
 import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
+import {
+  getContactData,
+  getMaskedEmail,
+  getSafeLocation,
+} from "../../utils/security";
 
 export async function getStaticPaths() {
   return languages.map((lang) => ({
@@ -10,6 +15,14 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = getTranslations(lang as Lang);
+
+// Check for security key in URL
+const url = Astro.url;
+const urlParams = url.searchParams;
+const hasKey = urlParams.get("key") === "contact2026";
+
+// Get contact data based on security
+const contactData = getContactData(hasKey);
 ---
 
 <!doctype html>
@@ -70,10 +83,10 @@ const t = getTranslations(lang as Lang);
               {t.sections.contact}
             </h2>
             <div class="text-xs contact-content text-slate-700 leading-relaxed">
-              <p>{t.contact.address}</p>
-              <p>{t.contact.city}</p>
-              <p class="break-all">{t.contact.email}</p>
-              <p>{t.contact.phone}</p>
+              {contactData.address && <p>{contactData.address}</p>}
+              <p>{contactData.city}</p>
+              <p class="break-all">{contactData.email}</p>
+              {contactData.phone && <p>{contactData.phone}</p>}
               <p>
                 <a
                   href={t.contact.websiteUrl}
