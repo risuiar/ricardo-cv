@@ -57,7 +57,7 @@ export function hasValidKey(keyFromUrl?: string): boolean {
  * Gets the masked email for spam protection
  */
 export function getMaskedEmail(): string {
-  return 'ricardo [at] ricardovoegeli [dot] dev';
+  return 'rvoegeli [at] gmail [dot] com';
 }
 
 /**

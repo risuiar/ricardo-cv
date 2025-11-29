@@ -119,17 +119,21 @@ const contactData = getContactData(hasKey);
                   {t.contact.github}
                 </a>
               </p>
-              <p class="mt-3">
-                <a
-                  href={t.contact.extendedCvUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
-                  download
-                >
-                  {t.contact.extendedCv}
-                </a>
-              </p>
+              {
+                hasKey && (
+                  <p class="mt-3">
+                    <a
+                      href={t.contact.extendedCvUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
+                      download
+                    >
+                      {t.contact.extendedCv}
+                    </a>
+                  </p>
+                )
+              }
             </div>
           </div>
 
