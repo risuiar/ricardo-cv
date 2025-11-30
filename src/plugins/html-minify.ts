@@ -35,7 +35,17 @@ export default function htmlMinify(): AstroIntegration {
                     removeStyleLinkTypeAttributes: true,
                     useShortDoctype: true,
                     minifyCSS: true,
-                    minifyJS: true,
+                    minifyJS: {
+                      compress: {
+                        drop_console: true,
+                        drop_debugger: true,
+                        pure_funcs: ['console.error'],
+                      },
+                      mangle: true,
+                      format: {
+                        comments: false,
+                      },
+                    },
                     removeEmptyAttributes: true,
                     removeOptionalTags: true,
                     removeAttributeQuotes: true,
