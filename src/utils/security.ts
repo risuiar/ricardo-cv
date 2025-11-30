@@ -2,18 +2,21 @@
  * Security utility to protect sensitive contact information
  * Only shows full data when a valid key is provided in URL
  * 
- * IMPORTANT: Set PUBLIC_SECRET_KEY in your .env file
- * This code runs server-side only, so the key comparison is safe
+ * IMPORTANT: Set PUBLIC_SECRET_KEY in your .env file (server-side only)
+ * This code runs server-side only in API endpoints, so the key comparison is safe
+ * 
+ * SECURITY: These functions are ONLY called from server-side code (API routes)
+ * The secret key and sensitive data are NEVER exposed to the client
  */
 
 // Get secret key from environment variable
-// NOTE: Using PUBLIC_ prefix because Astro static pages need it at build time
+// NOTE: This is only accessible server-side in API routes
 // WARNING: If PUBLIC_SECRET_KEY is not set, the system will reject all keys for security
 const SECRET_KEY = import.meta.env.PUBLIC_SECRET_KEY;
 
 /**
- * Checks if the current URL contains a valid security key
- * Works both server-side and client-side for static pages
+ * Checks if the provided key matches the secret key
+ * This function ONLY runs server-side in API routes
  * 
  * SECURITY: If SECRET_KEY is not configured, this will always return false
  */

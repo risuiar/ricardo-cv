@@ -16,9 +16,8 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const t = getTranslations(lang as Lang);
 
-// For static pages, we'll check the key on the client side
-// Server-side: always show safe data
-// Client-side: JavaScript will check the key and show full data if valid
+// Always start with safe data (masked email, safe location)
+// Full contact data is only loaded via secure API endpoint when valid key is provided
 const contactData = getContactData(false); // Start with safe data
 ---
 
@@ -877,41 +876,10 @@ const contactData = getContactData(false); // Start with safe data
         }
       }
     </style>
-    <script
-      define:vars={{
-        PUBLIC_CONTACT_ADDRESS: import.meta.env.PUBLIC_CONTACT_ADDRESS || "",
-        PUBLIC_CONTACT_CITY: import.meta.env.PUBLIC_CONTACT_CITY || "",
-        PUBLIC_CONTACT_EMAIL: import.meta.env.PUBLIC_CONTACT_EMAIL || "",
-        PUBLIC_CONTACT_PHONE: import.meta.env.PUBLIC_CONTACT_PHONE || "",
-        PUBLIC_SECRET_KEY: import.meta.env.PUBLIC_SECRET_KEY || "",
-      }}
-      is:inline
-    >
-      // Client-side security check for static pages
+    <script is:inline>
+      // Secure client-side check - no sensitive data exposed
       (function () {
-        // Store variables in local scope to ensure they're available
-        const SECRET_KEY =
-          typeof PUBLIC_SECRET_KEY !== "undefined" ? PUBLIC_SECRET_KEY : "";
-        const CONTACT_ADDRESS =
-          typeof PUBLIC_CONTACT_ADDRESS !== "undefined"
-            ? PUBLIC_CONTACT_ADDRESS
-            : "";
-        const CONTACT_CITY =
-          typeof PUBLIC_CONTACT_CITY !== "undefined" ? PUBLIC_CONTACT_CITY : "";
-        const CONTACT_EMAIL =
-          typeof PUBLIC_CONTACT_EMAIL !== "undefined"
-            ? PUBLIC_CONTACT_EMAIL
-            : "";
-        const CONTACT_PHONE =
-          typeof PUBLIC_CONTACT_PHONE !== "undefined"
-            ? PUBLIC_CONTACT_PHONE
-            : "";
-
-        function checkKey() {
-          if (!SECRET_KEY) {
-            return; // No key configured, keep safe data
-          }
-
+        async function loadContactData() {
           // Get key from URL
           const urlParams = new URLSearchParams(window.location.search);
           const keyFromUrl = urlParams.get("key");
@@ -920,47 +888,63 @@ const contactData = getContactData(false); // Start with safe data
             return; // No key in URL, keep safe data
           }
 
-          if (keyFromUrl.trim() !== SECRET_KEY.trim()) {
-            return; // Invalid key, keep safe data
-          }
+          try {
+            // Fetch contact data from secure API endpoint
+            const response = await fetch(`/api/contact?key=${encodeURIComponent(keyFromUrl)}`);
+            
+            if (!response.ok) {
+              return; // API error, keep safe data
+            }
 
-          // Valid key - show full contact information
-          const addressEl = document.getElementById("contact-address");
-          const cityEl = document.getElementById("contact-city");
-          const emailEl = document.getElementById("contact-email");
-          const phoneEl = document.getElementById("contact-phone");
-          const cvLinkEl = document.getElementById("extended-cv-link");
+            const result = await response.json();
+            
+            if (!result.success || !result.data.showFull) {
+              return; // Invalid key or no access, keep safe data
+            }
 
-          // Update with full data
-          if (addressEl && CONTACT_ADDRESS) {
-            addressEl.textContent = CONTACT_ADDRESS;
-            addressEl.classList.remove("hidden");
-          }
+            // Valid key - show full contact information
+            const addressEl = document.getElementById("contact-address");
+            const cityEl = document.getElementById("contact-city");
+            const emailEl = document.getElementById("contact-email");
+            const phoneEl = document.getElementById("contact-phone");
+            const cvLinkEl = document.getElementById("extended-cv-link");
 
-          if (cityEl && CONTACT_CITY) {
-            cityEl.textContent = CONTACT_CITY;
-          }
+            const data = result.data;
 
-          if (emailEl && CONTACT_EMAIL) {
-            emailEl.textContent = CONTACT_EMAIL;
-          }
+            // Update with full data
+            if (addressEl && data.address) {
+              addressEl.textContent = data.address;
+              addressEl.classList.remove("hidden");
+            }
 
-          if (phoneEl && CONTACT_PHONE) {
-            phoneEl.textContent = CONTACT_PHONE;
-            phoneEl.classList.remove("hidden");
-          }
+            if (cityEl && data.city) {
+              cityEl.textContent = data.city;
+            }
 
-          if (cvLinkEl) {
-            cvLinkEl.classList.remove("hidden");
+            if (emailEl && data.email) {
+              emailEl.textContent = data.email;
+            }
+
+            if (phoneEl && data.phone) {
+              phoneEl.textContent = data.phone;
+              phoneEl.classList.remove("hidden");
+            }
+
+            if (cvLinkEl) {
+              cvLinkEl.classList.remove("hidden");
+            }
+          } catch (error) {
+            // Silently fail - keep safe data on error
+            console.error("Failed to load contact data:", error);
           }
         }
 
         // Wait for DOM to be ready
         if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", checkKey);
+          document.addEventListener("DOMContentLoaded", loadContactData);
         } else {
           // DOM already ready, run immediately
-          checkKey();
+          loadContactData();
         }
       })();
     </script>
