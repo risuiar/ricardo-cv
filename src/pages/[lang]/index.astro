@@ -877,75 +877,35 @@ const contactData = getContactData(false); // Start with safe data
       }
     </style>
     <script is:inline>
-      // Secure client-side check - no sensitive data exposed
       (function () {
-        async function loadContactData() {
-          // Get key from URL
-          const urlParams = new URLSearchParams(window.location.search);
-          const keyFromUrl = urlParams.get("key");
-
-          if (!keyFromUrl) {
-            return; // No key in URL, keep safe data
-          }
-
+        async function t() {
+          const e = new URLSearchParams(window.location.search).get("key");
+          if (!e) return;
           try {
-            // Fetch contact data from secure API endpoint
-            const response = await fetch(`/api/contact?key=${encodeURIComponent(keyFromUrl)}`);
-            
-            if (!response.ok) {
-              return; // API error, keep safe data
-            }
-
-            const result = await response.json();
-            
-            if (!result.success || !result.data.showFull) {
-              return; // Invalid key or no access, keep safe data
-            }
-
-            // Valid key - show full contact information
-            const addressEl = document.getElementById("contact-address");
-            const cityEl = document.getElementById("contact-city");
-            const emailEl = document.getElementById("contact-email");
-            const phoneEl = document.getElementById("contact-phone");
-            const cvLinkEl = document.getElementById("extended-cv-link");
-
-            const data = result.data;
-
-            // Update with full data
-            if (addressEl && data.address) {
-              addressEl.textContent = data.address;
-              addressEl.classList.remove("hidden");
-            }
-
-            if (cityEl && data.city) {
-              cityEl.textContent = data.city;
-            }
-
-            if (emailEl && data.email) {
-              emailEl.textContent = data.email;
-            }
-
-            if (phoneEl && data.phone) {
-              phoneEl.textContent = data.phone;
-              phoneEl.classList.remove("hidden");
-            }
-
-            if (cvLinkEl) {
-              cvLinkEl.classList.remove("hidden");
-            }
-          } catch (error) {
-            // Silently fail - keep safe data on error
-            console.error("Failed to load contact data:", error);
-          }
+            const t = await fetch(`/api/contact?key=${encodeURIComponent(e)}`);
+            if (!t.ok) return;
+            const e = await t.json();
+            if (!e.success || !e.data.showFull) return;
+            const t = document.getElementById("contact-address"),
+              n = document.getElementById("contact-city"),
+              o = document.getElementById("contact-email"),
+              s = document.getElementById("contact-phone"),
+              c = document.getElementById("extended-cv-link"),
+              r = e.data;
+            t &&
+              r.address &&
+              ((t.textContent = r.address), t.classList.remove("hidden")),
+              n && r.city && (n.textContent = r.city),
+              o && r.email && (o.textContent = r.email),
+              s &&
+                r.phone &&
+                ((s.textContent = r.phone), s.classList.remove("hidden")),
+              c && c.classList.remove("hidden");
+          } catch (t) {}
         }
-
-        // Wait for DOM to be ready
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", loadContactData);
-        } else {
-          // DOM already ready, run immediately
-          loadContactData();
-        }
+        document.readyState === "loading"
+          ? document.addEventListener("DOMContentLoaded", t)
+          : t();
       })();
     </script>
   </body>

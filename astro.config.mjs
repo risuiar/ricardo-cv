@@ -1,11 +1,12 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import node from '@astrojs/node';
+import htmlMinify from './src/plugins/html-minify.ts';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'hybrid',
-  integrations: [tailwind()],
+  integrations: [tailwind(), htmlMinify()],
   adapter: node({
     mode: 'standalone',
   }),
