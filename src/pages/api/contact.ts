@@ -1,6 +1,9 @@
 import type { APIRoute } from 'astro';
 import { hasValidKey, getContactData } from '../../utils/security';
 
+// Explicitly mark this route as dynamic (not pre-rendered)
+export const prerender = false;
+
 /**
  * API endpoint to securely retrieve contact information
  * Only returns sensitive data if a valid key is provided
