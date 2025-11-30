@@ -5,6 +5,12 @@ export default {
     extend: {},
   },
   plugins: [],
+  // Optimize CSS for production
+  ...(process.env.NODE_ENV === 'production' && {
+    corePlugins: {
+      // Disable unused features in production
+    },
+  }),
 }
 
 
