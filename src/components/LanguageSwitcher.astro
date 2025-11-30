@@ -1,5 +1,5 @@
 ---
-import { languages, type Lang } from '../i18n';
+import { languages, type Lang } from "../i18n";
 
 interface Props {
   currentLang: Lang;
@@ -8,43 +8,85 @@ interface Props {
 const { currentLang } = Astro.props;
 const currentPath = Astro.url.pathname;
 // Remove language prefix and get the base path
-let pathWithoutLang = currentPath.replace(/^\/(de|en|es)/, '');
+let pathWithoutLang = currentPath.replace(/^\/(de|en|es)/, "");
 // Ensure path starts with / and handle root case
-if (!pathWithoutLang || pathWithoutLang === '') {
-  pathWithoutLang = '/';
-} else if (!pathWithoutLang.startsWith('/')) {
-  pathWithoutLang = '/' + pathWithoutLang;
+if (!pathWithoutLang || pathWithoutLang === "") {
+  pathWithoutLang = "/";
+} else if (!pathWithoutLang.startsWith("/")) {
+  pathWithoutLang = "/" + pathWithoutLang;
 }
 ---
 
-<div class="language-switcher no-print fixed top-2 right-2 sm:top-4 sm:right-4 z-50">
+<div
+  class="language-switcher no-print fixed top-2 right-2 sm:top-4 sm:right-4 z-50"
+>
   <div class="relative">
     <select
       id="lang-select"
       class="appearance-none bg-white border-2 border-slate-300 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 pr-7 sm:pr-8 text-xs sm:text-sm font-medium text-slate-700 cursor-pointer hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors shadow-md"
       data-path={pathWithoutLang}
     >
-      {languages.map((lang) => (
-        <option value={lang.code} selected={lang.code === currentLang}>
-          {lang.nativeName}
-        </option>
-      ))}
+      {
+        languages.map((lang) => (
+          <option value={lang.code} selected={lang.code === currentLang}>
+            {lang.nativeName}
+          </option>
+        ))
+      }
     </select>
-    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+    <div
+      class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2"
+    >
       <svg
         class="fill-current h-4 w-4 text-slate-500"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >
-        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+        <path
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        ></path>
       </svg>
     </div>
   </div>
 </div>
 
-    <script>
-      import '../../scripts/language-switcher.js';
-    </script>
+<script>
+  (function () {
+    function initLanguageSwitcher() {
+      const select = document.getElementById("lang-select");
+      if (!select) return;
+
+      select.addEventListener("change", function (this: HTMLSelectElement) {
+        try {
+          const lang = this.value;
+          let path = this.getAttribute("data-path") || "/";
+
+          if (!path.startsWith("/")) {
+            path = "/" + path;
+          }
+
+          let newPath = "/" + lang;
+
+          if (path !== "/") {
+            newPath += path;
+          } else {
+            newPath += "/";
+          }
+
+          window.location.href = newPath;
+        } catch (error) {
+          console.error("Error changing language:", error);
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initLanguageSwitcher);
+    } else {
+      initLanguageSwitcher();
+    }
+  })();
+</script>
 
 <style>
   @media print {
@@ -55,4 +97,3 @@ if (!pathWithoutLang || pathWithoutLang === '') {
     }
   }
 </style>
-
