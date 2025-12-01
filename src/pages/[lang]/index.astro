@@ -833,6 +833,10 @@ const contactData = getContactData(false); // Start with safe data
           justify-content: space-between !important;
         }
 
+        .header-flex > div:first-child {
+          text-align: left !important;
+        }
+
         .grid .section-item,
         .contact-section,
         .job-item {
@@ -877,7 +881,36 @@ const contactData = getContactData(false); // Start with safe data
       }
     </style>
     <script is:inline>
-      (function(){async function n(){const t=new URLSearchParams(window.location.search).get("key");if(!t)return;try{const e=await fetch(`/api/contact?key=${encodeURIComponent(t)}`);if(!e.ok)return;const o=await e.json();if(!o.success||!o.data.showFull)return;const a=document.getElementById("contact-address"),r=document.getElementById("contact-city"),s=document.getElementById("contact-email"),c=document.getElementById("contact-phone"),i=document.getElementById("extended-cv-link"),d=o.data;a&&d.address&&((a.textContent=d.address),a.classList.remove("hidden")),r&&d.city&&(r.textContent=d.city),s&&d.email&&(s.textContent=d.email),c&&d.phone&&((c.textContent=d.phone),c.classList.remove("hidden")),i&&i.classList.remove("hidden")}catch(t){}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",n):n()})();
+      (function () {
+        async function n() {
+          const t = new URLSearchParams(window.location.search).get("key");
+          if (!t) return;
+          try {
+            const e = await fetch(`/api/contact?key=${encodeURIComponent(t)}`);
+            if (!e.ok) return;
+            const o = await e.json();
+            if (!o.success || !o.data.showFull) return;
+            const a = document.getElementById("contact-address"),
+              r = document.getElementById("contact-city"),
+              s = document.getElementById("contact-email"),
+              c = document.getElementById("contact-phone"),
+              i = document.getElementById("extended-cv-link"),
+              d = o.data;
+            a &&
+              d.address &&
+              ((a.textContent = d.address), a.classList.remove("hidden")),
+              r && d.city && (r.textContent = d.city),
+              s && d.email && (s.textContent = d.email),
+              c &&
+                d.phone &&
+                ((c.textContent = d.phone), c.classList.remove("hidden")),
+              i && i.classList.remove("hidden");
+          } catch (t) {}
+        }
+        document.readyState === "loading"
+          ? document.addEventListener("DOMContentLoaded", n)
+          : n();
+      })();
     </script>
   </body>
 </html>

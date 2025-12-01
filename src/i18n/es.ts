@@ -87,15 +87,12 @@ export const translations = {
       ]
     },
     skycell: {
-      title: 'SkyCell AG / Zúrich – Senior Frontend Engineer',
+      title: 'SkyCell AG / Zúrich – Frontend Engineer',
       period: '12.2018 – 11.2024',
       items: [
-        'Desarrollo de componentes React modulares → mejora del tiempo de carga en un 30%',
-        'Introducción de TypeScript, linting y testing → releases más estables y menos bugs',
-        'Optimización de la gestión de datos (React Query) → ~40% menos consumo de API',
-        'Integración de APIs REST complejas y flujos de datos en tiempo real',
-        'Responsable de code reviews, arquitectura y documentación técnica',
-        'Trabajo cercano con equipos de Producto, UX y Backend para definir y entregar funcionalidades'
+        'Como uno de los primeros desarrolladores, arquitecté aplicaciones React críticas que siguen en producción hoy.',
+        'Aseguré la calidad del código mediante code reviews, testing y bibliotecas de componentes reutilizables.',
+        'Impulsé la evolución técnica liderando refactorizaciones y coordinando el diseño de APIs con el backend.'
       ]
     },
     navyboot: {

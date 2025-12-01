@@ -56,9 +56,10 @@ export const translations = {
     native: 'Muttersprache'
   },
   aboutMe: {
-    paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
-    paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
-    paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
+    // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
+    // paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
+    // paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
+    paragraph1: 'Senior Frontend Engineer mit über 20 Jahren Erfahrung und einer Leidenschaft für Pixel-Perfect UI und erstklassige User Experience (UX). Experte in React und modernen Web-Technologien, mit einem starken Fokus auf Performance und die Brücke zwischen Design und Engineering. Erfahrung in der Entwicklung skalierbarer Architekturen bei Premium-Marken wie Navyboot und SkyCell. Aktuell vertiefe ich meine Expertise in Next.js und Server-Side-Rendering durch komplexe persönliche Projekte.',
   },
   shortProfile: {
     items: [
@@ -88,15 +89,12 @@ export const translations = {
       ]
     },
     skycell: {
-      title: 'SkyCell AG / Zürich – Senior Frontend Engineer',
+      title: 'SkyCell AG / Zürich – Frontend Engineer',
       period: '12.2018 – 11.2024',
       items: [
-        'Entwicklung modularer React-Komponenten → UI-Ladezeit um 30% verbessert',
-        'Einführung von TypeScript, Linting und Testing → stabilere Releases & weniger Bugs',
-        'Optimierung des Datenmanagements (React Query) → ~40% weniger API-Overhead',
-        'Integration komplexer REST-APIs und Echtzeit-Datenflüsse',
-        'Verantwortung für Code-Reviews, Architekturentscheidungen und technische Dokumentation',
-        'Enge Zusammenarbeit mit Produkt-, UX- und Backend-Teams zur Definition und Umsetzung von Features'
+        'Als einer der ersten Entwickler massgeblich am Aufbau kritischer React-Applikationen beteiligt, die heute noch genutzt werden.',
+        'Sicherte Code-Qualität und Team-Effizienz durch Code Reviews, Testing und wiederverwendbare Komponenten.',
+        'Trieb die technische Weiterentwicklung durch Refactoring und enge API-Abstimmung mit dem Backend voran.'
       ]
     },
     navyboot: {
