@@ -2,11 +2,11 @@ export const translations = {
   lang: 'en',
   meta: {
     title: 'Ricardo Vögeli – Senior Frontend Engineer',
-    description: 'Senior Frontend Engineer with Backend Experience'
+    description: 'Senior React Developer & IT Allrounder | Frontend & Application Support'
   },
   header: {
     title: 'Ricardo Vögeli',
-    subtitle: 'Senior Frontend Engineer with Backend Experience',
+    subtitle: 'Senior React Developer & IT Allrounder | Frontend & Application Support',
     portraitAlt: 'Portrait of Ricardo Vögeli'
   },
   sections: {
@@ -56,7 +56,7 @@ export const translations = {
     native: 'Native'
   },
   aboutMe: {
-    paragraph1: 'Senior Frontend Engineer focused on React, with more than 20 years of experience building scalable web applications. My work centers on performance, architecture, code quality and user-centric design. I have extensive experience collaborating closely with Backend, UX, QA and Product teams. Comfortable in agile environments and used to delivering end-to-end features with measurable business impact.',
+    paragraph1: 'Senior Frontend Engineer focused on React, with more than 20 years of experience building scalable web applications. My work centers on performance, architecture, code quality and user-centric design. I have extensive experience collaborating closely with Backend, UX, QA and Product teams. Comfortable in agile environments and used to delivering end-to-end features with measurable business impact. Beyond coding, I bring a pragmatic \'hands-on\' mentality to troubleshooting and application support, ensuring long-term system stability.',
     paragraph2: 'Colleagues describe me as positive, reliable and team-oriented, often acting as a connecting and motivating force within the team.'
   },
   shortProfile: {
@@ -74,7 +74,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Freelance / Personal Projects',
+      title: 'Lead Full Stack Developer',
       period: '12.2024 – Present',
       description1: 'Development of modern full-stack projects using Astro, Tailwind, React, Laravel and Supabase. Focus on architecture, performance and scalable UI components. Responsible for planning, technical decisions and full end-to-end implementation.',
       description2: 'Responsible for architecture, planning, development and continuous improvement.',

@@ -2,11 +2,11 @@ export const translations = {
   lang: 'es',
   meta: {
     title: 'Ricardo Vögeli – Senior Frontend Engineer',
-    description: 'Senior Frontend Engineer con experiencia en Backend'
+    description: 'Desarrollador Senior React & IT Generalista | Frontend & Soporte de Aplicaciones'
   },
   header: {
     title: 'Ricardo Vögeli',
-    subtitle: 'Senior Frontend Engineer con experiencia en Backend',
+    subtitle: 'Desarrollador Senior React & IT Generalista | Frontend & Soporte de Aplicaciones',
     portraitAlt: 'Retrato de Ricardo Vögeli'
   },
   sections: {
@@ -56,7 +56,7 @@ export const translations = {
     native: 'Nativo'
   },
   aboutMe: {
-    paragraph1: 'Senior Frontend Engineer especializado en React, con más de 20 años de experiencia desarrollando aplicaciones web escalables. Me centro en rendimiento, arquitectura, calidad de código y diseño orientado al usuario. Tengo amplia experiencia trabajando de forma estrecha con equipos de Backend, UX, QA y Producto. Acostumbrado a entornos ágiles y a entregar funcionalidades end-to-end con impacto claro en el negocio.',
+    paragraph1: 'Senior Frontend Engineer especializado en React, con más de 20 años de experiencia desarrollando aplicaciones web escalables. Me centro en rendimiento, arquitectura, calidad de código y diseño orientado al usuario. Tengo amplia experiencia trabajando de forma estrecha con equipos de Backend, UX, QA y Producto. Acostumbrado a entornos ágiles y a entregar funcionalidades end-to-end con impacto claro en el negocio. Más allá del código, aporto una mentalidad pragmática para la resolución de problemas y el soporte de aplicaciones, asegurando la estabilidad del sistema a largo plazo.',
     paragraph2: 'Me caracterizo por una actitud positiva, confiable y enfocada en el trabajo en equipo. A menudo se me reconoce como un punto de unión y motivación dentro del equipo.'
   },
   shortProfile: {
@@ -74,7 +74,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Freelance / Proyectos personales',
+      title: 'Desarrollador Full Stack Lead',
       period: '12.2024 – presente',
       description1: 'Desarrollo de proyectos Fullstack modernos con Astro, Tailwind, React, Laravel y Supabase. Enfoque en arquitectura, rendimiento y componentes UI escalables. Responsable de la planificación, decisiones técnicas y la implementación completa de cada proyecto.',
       description2: 'Responsable de la arquitectura, planificación, desarrollo y mejora continua.',

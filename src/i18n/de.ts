@@ -2,11 +2,11 @@ export const translations = {
   lang: 'de',
   meta: {
     title: 'Ricardo Vögeli – Senior Frontend Engineer',
-    description: 'Senior Frontend Engineer mit Backend-Erfahrung'
+    description: 'Senior React Developer & IT Allrounder | Frontend & Application Support'
   },
   header: {
     title: 'Ricardo Vögeli',
-    subtitle: 'Senior Frontend Engineer mit Backend-Erfahrung',
+    subtitle: 'Senior React Entwickler & IT Allrounder | Frontend & Application Support',
     portraitAlt: 'Portrait von Ricardo Vögeli'
   },
   sections: {
@@ -59,7 +59,7 @@ export const translations = {
     // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
     // paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
     // paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
-    paragraph1: 'Senior Frontend Engineer mit über 20 Jahren Erfahrung und einer Leidenschaft für Pixel-Perfect UI und erstklassige User Experience (UX). Experte in React und modernen Web-Technologien, mit einem starken Fokus auf Performance und die Brücke zwischen Design und Engineering. Erfahrung in der Entwicklung skalierbarer Architekturen bei Premium-Marken wie Navyboot und SkyCell. Aktuell vertiefe ich meine Expertise in Next.js und Server-Side-Rendering durch komplexe persönliche Projekte.',
+    paragraph1: 'Senior Frontend Engineer mit über 20 Jahren Erfahrung und einer Leidenschaft für Pixel-Perfect UI und erstklassige User Experience (UX). Experte in React und modernen Web-Technologien, mit einem starken Fokus auf Performance und die Brücke zwischen Design und Engineering. Erfahrung in der Entwicklung skalierbarer Architekturen bei Premium-Marken wie Navyboot und SkyCell. Aktuell vertiefe ich meine Expertise in Next.js und Server-Side-Rendering durch komplexe persönliche Projekte. Neben der Entwicklung bringe ich eine pragmatische \'Hands-on\'-Mentalität für Troubleshooting und Application Support mit, um langfristige Systemstabilität zu gewährleisten.',
   },
   shortProfile: {
     items: [
@@ -76,7 +76,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Freelance / Persönliche Projekte',
+      title: 'Lead Full Stack Developer',
       period: '12.2024 – heute',
       description1: 'Entwicklung moderner Fullstack-Projekte mit Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
       description2: 'Verantwortlich für Architektur, Planung, Umsetzung und kontinuierliche Verbesserung.',
