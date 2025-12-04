@@ -333,7 +333,7 @@ const contactData = getContactData(false); // Start with safe data
               {t.sections.aboutMe}
             </h2>
             <p class="text-xs text-slate-700 leading-relaxed">
-              {t.aboutMe.paragraph1}
+              <span set:html={t.aboutMe.paragraph1} />
               {
                 "paragraph2" in t.aboutMe && (
                   <>
@@ -345,7 +345,8 @@ const contactData = getContactData(false); // Start with safe data
             </p>
           </div>
 
-          <!-- Kurzprofil -->
+          {
+            /*<!-- Kurzprofil -->
           <div class="section-item section-spacing">
             <h2
               class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
@@ -362,7 +363,8 @@ const contactData = getContactData(false); // Start with safe data
                 ))
               }
             </div>
-          </div>
+          </div>*/
+          }
 
           <!-- Berufserfahrung -->
           <div class="section-spacing">

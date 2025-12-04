@@ -56,8 +56,8 @@ export const translations = {
     native: 'Native'
   },
   aboutMe: {
-    paragraph1: 'Senior Frontend Engineer focused on React, with more than 20 years of experience building scalable web applications. My work centers on performance, architecture, code quality and user-centric design. I have extensive experience collaborating closely with Backend, UX, QA and Product teams. Comfortable in agile environments and used to delivering end-to-end features with measurable business impact. Beyond coding, I bring a pragmatic \'hands-on\' mentality to troubleshooting and application support, ensuring long-term system stability.',
-    paragraph2: 'Colleagues describe me as positive, reliable and team-oriented, often acting as a connecting and motivating force within the team.'
+    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience in software engineering, I combine modern web technology with the pragmatic troubleshooting skills of an IT Allrounder.',
+    paragraph2: 'I prioritize clean architecture, performance, and sustainable solutions. Zurich has been my home for over 20 years, and I am looking for a long-term commitment where I can add value through my experience and hands-on mentality.'
   },
   shortProfile: {
     items: [

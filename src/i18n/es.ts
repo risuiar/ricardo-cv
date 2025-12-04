@@ -56,8 +56,8 @@ export const translations = {
     native: 'Nativo'
   },
   aboutMe: {
-    paragraph1: 'Senior Frontend Engineer especializado en React, con más de 20 años de experiencia desarrollando aplicaciones web escalables. Me centro en rendimiento, arquitectura, calidad de código y diseño orientado al usuario. Tengo amplia experiencia trabajando de forma estrecha con equipos de Backend, UX, QA y Producto. Acostumbrado a entornos ágiles y a entregar funcionalidades end-to-end con impacto claro en el negocio. Más allá del código, aporto una mentalidad pragmática para la resolución de problemas y el soporte de aplicaciones, asegurando la estabilidad del sistema a largo plazo.',
-    paragraph2: 'Me caracterizo por una actitud positiva, confiable y enfocada en el trabajo en equipo. A menudo se me reconoce como un punto de unión y motivación dentro del equipo.'
+    paragraph1: '<strong>Senior Frontend Engineer & Especialista en IT</strong> Desarrollador apasionado con enfoque en React, Next.js y Pixel-Perfect UI. Con más de 20 años de experiencia en ingeniería de software, combino tecnología web moderna con la capacidad pragmática de resolución de problemas de un perfil generalista (IT Allrounder).',
+    paragraph2: 'Priorizo la arquitectura limpia, el rendimiento y las soluciones sostenibles. Zúrich ha sido mi hogar durante más de 20 años y busco un compromiso a largo plazo donde pueda aportar valor con mi experiencia y mentalidad práctica.'
   },
   shortProfile: {
     items: [
