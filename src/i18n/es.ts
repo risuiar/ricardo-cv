@@ -120,6 +120,20 @@ export const translations = {
     casAdvancedPeriod: ' – OST (2023–2024)',
     cas: 'CAS Frontend Engineering',
     casPeriod: ' – HSR (2015–2016)'
+  },
+  application: {
+    title: 'Carta de Aplicación',
+    recipient: 'Destinatario',
+    recipientPlaceholder: 'ej. B3 Gruppe AG',
+    address: 'Dirección',
+    addressPlaceholder: 'ej. Ilgenstrasse 7\nCH-9200 Gossau',
+    subject: 'Asunto',
+    subjectPlaceholder: 'ej. Aplicación como Software Developer',
+    content: 'Contenido',
+    contentPlaceholder: 'Su texto de aplicación aquí...',
+    print: 'Imprimir',
+    save: 'Guardar',
+    saved: '¡Guardado!'
   }
 } as const;
 

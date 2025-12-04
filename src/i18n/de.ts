@@ -123,6 +123,20 @@ export const translations = {
     casAdvancedPeriod: ' – OST (2023–2024)',
     cas: 'CAS Frontend Engineering',
     casPeriod: ' – HSR (2015–2016)'
+  },
+  application: {
+    title: 'Bewerbungsschreiben',
+    recipient: 'Empfänger',
+    recipientPlaceholder: 'z.B. B3 Gruppe AG',
+    address: 'Adresse',
+    addressPlaceholder: 'z.B. Ilgenstrasse 7\nCH-9200 Gossau',
+    subject: 'Betreff',
+    subjectPlaceholder: 'z.B. Bewerbung als Software Developer',
+    content: 'Inhalt',
+    contentPlaceholder: 'Ihr Bewerbungstext hier...',
+    print: 'Drucken',
+    save: 'Speichern',
+    saved: 'Gespeichert!'
   }
 } as const;
 

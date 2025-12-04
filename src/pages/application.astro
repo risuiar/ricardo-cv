@@ -1,0 +1,730 @@
+---
+// Make this page dynamic so it can read query parameters
+export const prerender = false;
+
+import { getTranslations, type Lang, languages } from "../i18n";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import { getContactData } from "../utils/security";
+
+// Detect language from query parameter, URL, or browser
+function detectLanguage(): Lang {
+  const urlParams = Astro.url.searchParams;
+  const queryLang = urlParams.get("lang");
+
+  // Check query parameter first (highest priority)
+  if (queryLang && ["de", "en", "es"].includes(queryLang)) {
+    return queryLang as Lang;
+  }
+
+  // Check URL path for language prefix
+  const urlLang = Astro.url.pathname.split("/")[1];
+  if (urlLang && ["de", "en", "es"].includes(urlLang)) {
+    return urlLang as Lang;
+  }
+
+  // Default to German based on the PDF example
+  return "de";
+}
+
+const lang = detectLanguage();
+const t = getTranslations(lang);
+const contactData = getContactData(false);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title id="page-title">{t.application.title} – Ricardo Vögeli</title>
+    <meta name="description" content={t.application.title} />
+  </head>
+  <body class="bg-gray-50">
+    <LanguageSwitcher currentLang={lang} />
+
+    <!-- Editor Section (hidden when printing) -->
+    <div class="editor-section no-print max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+      <h1 class="text-2xl font-bold text-slate-800 mb-6">
+        {t.application.title}
+      </h1>
+
+      <div class="bg-white rounded-lg shadow-md p-6 space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">
+            {t.application.recipient}
+          </label>
+          <input
+            type="text"
+            id="recipient"
+            class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t.application.recipientPlaceholder}
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">
+            {t.application.address}
+          </label>
+          <textarea
+            id="address"
+            rows="3"
+            class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+            placeholder={t.application.addressPlaceholder}></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">
+            {t.application.subject}
+          </label>
+          <input
+            type="text"
+            id="subject"
+            class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t.application.subjectPlaceholder}
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">
+            {t.application.content}
+          </label>
+          <textarea
+            id="content"
+            rows="12"
+            class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder={t.application.contentPlaceholder}></textarea>
+        </div>
+
+        <div class="flex gap-3 pt-4">
+          <button
+            id="save-btn"
+            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+          >
+            {t.application.save}
+          </button>
+          <button
+            id="print-btn"
+            class="px-4 py-2 bg-slate-600 text-white rounded-md hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 transition-colors"
+          >
+            {t.application.print}
+          </button>
+          <span
+            id="save-status"
+            class="px-4 py-2 text-green-600 font-medium hidden"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Printable Letter Section -->
+    <div
+      class="page max-w-[210mm] min-h-[297mm] mx-auto bg-white shadow-lg print:shadow-none"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0">
+        <!-- LEFT COLUMN - Contact Info -->
+        <div
+          class="bg-slate-50 left-column-padding border-r-0 md:border-r border-slate-200 border-b md:border-b-0"
+        >
+          <div class="section-item contact-section">
+            <h2
+              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider section-title-spacing border-b-2 border-blue-600"
+            >
+              {t.sections.contact}
+            </h2>
+            <div
+              class="text-xs contact-content text-slate-700 leading-relaxed"
+              id="contact-info"
+            >
+              <p id="contact-address" class="hidden"></p>
+              <p id="contact-city">{contactData.city}</p>
+              <p class="break-all" id="contact-email">{contactData.email}</p>
+              <p id="contact-phone" class="hidden"></p>
+              <p>
+                <a
+                  href={t.contact.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all print:text-blue-800"
+                >
+                  {t.contact.website}
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/ricardo-voegeli/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 underline break-all print:text-blue-800"
+                >
+                  {t.contact.linkedin}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN - Letter Content -->
+        <div class="right-column-padding relative min-h-full flex flex-col">
+          <!-- Date (top right) - First element -->
+          <div
+            class="absolute top-4 right-4 text-right text-xs text-slate-600"
+            id="date-display"
+          >
+          </div>
+
+          <!-- Recipient (top left) -->
+          <div class="mb-6 pt-6">
+            <div
+              id="recipient-display"
+              class="text-sm font-semibold text-slate-800 mb-2"
+            >
+            </div>
+            <div
+              id="address-display"
+              class="text-xs text-slate-700 whitespace-pre-line"
+            >
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="mb-4">
+            <h1 id="subject-display" class="text-base font-bold text-slate-800">
+            </h1>
+          </div>
+
+          <!-- Content -->
+          <div
+            class="text-xs text-slate-700 leading-relaxed whitespace-pre-line flex-1"
+            id="content-display"
+          >
+          </div>
+
+          <!-- Closing -->
+          <div class="mt-8">
+            <p class="text-xs text-slate-700 mb-4">
+              {
+                lang === "de"
+                  ? "Freundliche Grüsse"
+                  : lang === "es"
+                    ? "Saludos cordiales"
+                    : "Kind regards"
+              }
+            </p>
+            <img
+              src="/signature.png"
+              alt="Signature"
+              class="signature-image mb-2"
+            />
+            <p class="text-xs text-slate-800 font-semibold">Ricardo Vögeli</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style is:global>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .page {
+        margin-top: 0 !important;
+        margin-bottom: 0;
+      }
+
+      :root {
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 2.5rem;
+
+        --padding-page-mobile: var(--spacing-sm);
+        --padding-page-tablet: var(--spacing-md);
+        --padding-page-desktop: var(--spacing-2xl);
+
+        --padding-section-mobile: var(--spacing-xs);
+        --padding-section-tablet: var(--spacing-sm);
+        --padding-section-desktop: var(--spacing-md);
+
+        --padding-contact-mobile: 0.25rem;
+        --padding-contact-tablet: var(--spacing-xs);
+        --padding-contact-desktop: var(--spacing-sm);
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .animate-slide-in {
+        animation: slideIn 0.8s ease-out forwards;
+      }
+
+      .section-item {
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .section-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .section-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .section-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .section-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .section-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .section-title {
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        transition: width 0.6s ease;
+      }
+
+      .section-title.active::after {
+        width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        .page {
+          max-width: 100%;
+          margin: 0;
+          box-shadow: none;
+          min-height: auto;
+        }
+
+        body {
+          background: white;
+        }
+
+        .section-item {
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .page {
+          margin: 0 auto;
+        }
+      }
+
+      .left-column-padding,
+      .right-column-padding {
+        padding: var(--padding-section-mobile);
+      }
+
+      @media (min-width: 640px) {
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-section-tablet);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-section-desktop);
+        }
+      }
+
+      .contact-section {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .contact-content {
+        padding-top: var(--padding-contact-mobile);
+      }
+
+      @media (min-width: 640px) {
+        .contact-content {
+          padding-top: var(--padding-contact-tablet);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .contact-content {
+          padding-top: var(--padding-contact-desktop);
+        }
+        .contact-section {
+          margin-bottom: var(--spacing-2xl);
+        }
+      }
+
+      .section-title-spacing {
+        margin-bottom: var(--spacing-sm);
+        padding-bottom: var(--spacing-xs);
+      }
+
+      @media (min-width: 768px) {
+        .section-title-spacing {
+          margin-bottom: var(--spacing-md);
+          padding-bottom: var(--spacing-xs);
+        }
+      }
+
+      .signature-image {
+        height: 60px;
+        width: auto;
+        max-width: 300px;
+        object-fit: contain;
+        opacity: 0.9;
+      }
+
+      @media print {
+        .signature-image {
+          height: 50px;
+          max-width: 250px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white !important;
+        }
+
+        .no-print,
+        .editor-section {
+          display: none !important;
+          visibility: hidden !important;
+        }
+
+        .page {
+          width: 210mm !important;
+          min-height: 297mm !important;
+          box-shadow: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .page > .grid {
+          display: grid !important;
+          grid-template-columns: 280px 1fr !important;
+          gap: 0 !important;
+        }
+
+        .left-column-padding {
+          border-right: 1px solid #e2e8f0 !important;
+        }
+
+        .left-column-padding,
+        .right-column-padding {
+          padding: var(--padding-page-desktop) !important;
+        }
+
+        .right-column-padding {
+          border-left: none !important;
+        }
+
+        .animate-fade-in,
+        .animate-slide-in,
+        .section-item {
+          animation: none !important;
+          opacity: 1 !important;
+        }
+
+        .grid .section-item,
+        .contact-section {
+          page-break-inside: avoid;
+          break-inside: avoid;
+        }
+
+        /* Avoid splitting important blocks across pages */
+        h1,
+        h2,
+        h3,
+        .section,
+        .left,
+        .right,
+        .container {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .page {
+          page-break-inside: avoid;
+        }
+
+        h2 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+
+        .container {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        @page {
+          margin: 0;
+        }
+      }
+    </style>
+
+    <script is:inline define:vars={{ lang }}>
+      (function () {
+        const STORAGE_KEY = `application-letter-${lang}`;
+
+        // Format date based on language
+        function formatDate(date) {
+          const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+
+          if (lang === "de") {
+            return date.toLocaleDateString("de-CH", options);
+          } else if (lang === "es") {
+            return date.toLocaleDateString("es-ES", options);
+          } else {
+            return date.toLocaleDateString("en-GB", options);
+          }
+        }
+
+        // Load from localStorage
+        function loadFromStorage() {
+          try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+              const data = JSON.parse(saved);
+              document.getElementById("recipient").value = data.recipient || "";
+              document.getElementById("address").value = data.address || "";
+              document.getElementById("subject").value = data.subject || "";
+              document.getElementById("content").value = data.content || "";
+              updatePreview();
+            }
+          } catch (e) {
+            console.error("Error loading from storage:", e);
+          }
+        }
+
+        // Save to localStorage
+        function saveToStorage() {
+          try {
+            const data = {
+              recipient: document.getElementById("recipient").value,
+              address: document.getElementById("address").value,
+              subject: document.getElementById("subject").value,
+              content: document.getElementById("content").value,
+              lang: lang,
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+            // Show save status
+            const statusEl = document.getElementById("save-status");
+            statusEl.textContent =
+              lang === "de"
+                ? "Gespeichert!"
+                : lang === "es"
+                  ? "¡Guardado!"
+                  : "Saved!";
+            statusEl.classList.remove("hidden");
+            setTimeout(() => {
+              statusEl.classList.add("hidden");
+            }, 2000);
+          } catch (e) {
+            console.error("Error saving to storage:", e);
+          }
+        }
+
+        // Update page title
+        function updatePageTitle() {
+          const recipient = document.getElementById("recipient").value || "";
+          const titleEl = document.getElementById("page-title");
+
+          if (recipient) {
+            let titlePrefix = "";
+            if (lang === "de") {
+              titlePrefix = "Bewerbung";
+            } else if (lang === "es") {
+              titlePrefix = "Aplicación";
+            } else {
+              titlePrefix = "Application";
+            }
+
+            // Format: [Company] - [Prefix] Ricardo Vögeli
+            titleEl.textContent = `${recipient} - ${titlePrefix} Ricardo Vögeli`;
+          } else {
+            const defaultTitle =
+              lang === "de"
+                ? "Bewerbungsschreiben – Ricardo Vögeli"
+                : lang === "es"
+                  ? "Carta de Aplicación – Ricardo Vögeli"
+                  : "Application Letter – Ricardo Vögeli";
+            titleEl.textContent = defaultTitle;
+          }
+        }
+
+        // Update preview
+        function updatePreview() {
+          document.getElementById("recipient-display").textContent =
+            document.getElementById("recipient").value || "";
+          document.getElementById("address-display").textContent =
+            document.getElementById("address").value || "";
+          document.getElementById("subject-display").textContent =
+            document.getElementById("subject").value || "";
+          document.getElementById("content-display").textContent =
+            document.getElementById("content").value || "";
+
+          // Update date
+          const today = new Date();
+          document.getElementById("date-display").textContent =
+            formatDate(today);
+
+          // Update page title
+          updatePageTitle();
+        }
+
+        // Initialize
+        function init() {
+          // Set today's date
+          const today = new Date();
+          document.getElementById("date-display").textContent =
+            formatDate(today);
+
+          // Load saved data
+          loadFromStorage();
+
+          // Add event listeners
+          ["recipient", "address", "subject", "content"].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.addEventListener("input", updatePreview);
+            }
+          });
+
+          document
+            .getElementById("save-btn")
+            .addEventListener("click", saveToStorage);
+          document.getElementById("print-btn").addEventListener("click", () => {
+            window.print();
+          });
+
+          // Initial preview update (this will also update the title)
+          updatePreview();
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+
+    <script is:inline>
+      (function () {
+        // Update language selector to match current URL parameter
+        function updateLanguageSelector() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const langParam = urlParams.get("lang");
+          const langSelect = document.getElementById("lang-select");
+
+          if (
+            langSelect &&
+            langParam &&
+            ["de", "en", "es"].includes(langParam)
+          ) {
+            langSelect.value = langParam;
+          }
+        }
+
+        async function n() {
+          const t = new URLSearchParams(window.location.search).get("key");
+          if (!t) return;
+          try {
+            const e = await fetch(`/api/contact?key=${encodeURIComponent(t)}`);
+            if (!e.ok) return;
+            const o = await e.json();
+            if (!o.success || !o.data.showFull) return;
+            const a = document.getElementById("contact-address"),
+              r = document.getElementById("contact-city"),
+              s = document.getElementById("contact-email"),
+              c = document.getElementById("contact-phone"),
+              d = o.data;
+            a &&
+              d.address &&
+              ((a.textContent = d.address), a.classList.remove("hidden")),
+              r && d.city && (r.textContent = d.city),
+              s && d.email && (s.textContent = d.email),
+              c &&
+                d.phone &&
+                ((c.textContent = d.phone), c.classList.remove("hidden"));
+          } catch (t) {}
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", function () {
+            updateLanguageSelector();
+            n();
+          });
+        } else {
+          updateLanguageSelector();
+          n();
+        }
+      })();
+    </script>
+  </body>
+</html>

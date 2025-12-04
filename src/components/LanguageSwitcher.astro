@@ -59,6 +59,17 @@ if (!pathWithoutLang || pathWithoutLang === "") {
       select.addEventListener("change", function (this: HTMLSelectElement) {
         try {
           const lang = this.value;
+          const currentPath = window.location.pathname;
+          
+          // Special handling for /application route - use query parameter
+          if (currentPath === "/application" || currentPath.startsWith("/application/")) {
+            const url = new URL(window.location.href);
+            url.pathname = "/application"; // Ensure pathname is exactly /application
+            url.searchParams.set("lang", lang);
+            window.location.href = url.toString();
+            return;
+          }
+          
           let path = this.getAttribute("data-path") || "/";
 
           if (!path.startsWith("/")) {
@@ -73,7 +84,10 @@ if (!pathWithoutLang || pathWithoutLang === "") {
             newPath += "/";
           }
 
-          window.location.href = newPath;
+          // Preserve query parameters (like 'key')
+          const url = new URL(window.location.href);
+          url.pathname = newPath;
+          window.location.href = url.toString();
         } catch (error) {
           console.error("Error changing language:", error);
         }
