@@ -67,286 +67,304 @@ const contactData = getContactData(false); // Start with safe data
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0">
-        <!-- LEFT COLUMN -->
-        <div
-          class="bg-slate-50 left-column-padding border-r-0 md:border-r border-slate-200 border-b md:border-b-0"
-        >
-          <!-- Kontakt -->
-          <div class="section-item contact-section">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider section-title-spacing border-b-2 border-blue-600"
-            >
-              {t.sections.contact}
-            </h2>
-            <div
-              class="text-xs contact-content text-slate-700 leading-relaxed"
-              id="contact-info"
-            >
-              <p id="contact-address" class="hidden"></p>
-              <p id="contact-city">{contactData.city}</p>
-              <p class="break-all" id="contact-email">{contactData.email}</p>
-              <p id="contact-phone" class="hidden"></p>
-              <p>
-                <a
-                  href={t.contact.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 hover:text-blue-800 underline break-all"
+      <table class="print-table">
+        <thead class="print-header">
+          <tr>
+            <th>
+              <div class="print-spacer">
+                <div class="print-spacer-left"></div>
+                <div class="print-spacer-right"></div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="print-tbody">
+          <tr class="print-row">
+            <td class="print-cell">
+              <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-0">
+                <!-- LEFT COLUMN -->
+                <div
+                  class="bg-slate-50 left-column-padding border-r-0 md:border-r border-slate-200 border-b md:border-b-0"
                 >
-                  {t.contact.website}
-                </a>
-              </p>
-              <p>
-                <a
-                  href="https://www.linkedin.com/in/ricardo-voegeli/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 hover:text-blue-800 underline break-all"
-                >
-                  {t.contact.linkedin}
-                </a>
-              </p>
-              <p>
-                <a
-                  href="https://github.com/risuiar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 hover:text-blue-800 underline break-all"
-                >
-                  {t.contact.github}
-                </a>
-              </p>
-              <p class="mt-3 hidden" id="extended-cv-link">
-                <a
-                  href={t.contact.extendedCvUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
-                  download
-                >
-                  {t.contact.extendedCv}
-                </a>
-              </p>
-            </div>
-          </div>
-
-          <!-- Highlights -->
-          <div class="section-item section-spacing">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.highlights}
-            </h2>
-            <div class="space-y-2 text-xs text-slate-700">
-              {
-                t.highlights.map((highlight) => (
-                  <div class="flex items-start">
-                    <span class="text-blue-600 mr-2">●</span>
-                    <span>{highlight}</span>
+                  <!-- Kontakt -->
+                  <div class="section-item contact-section">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider section-title-spacing border-b-2 border-blue-600"
+                    >
+                      {t.sections.contact}
+                    </h2>
+                    <div
+                      class="text-xs contact-content text-slate-700 leading-relaxed"
+                      id="contact-info"
+                    >
+                      <p id="contact-address" class="hidden"></p>
+                      <p id="contact-city">{contactData.city}</p>
+                      <p class="break-all" id="contact-email">
+                        {contactData.email}
+                      </p>
+                      <p id="contact-phone" class="hidden"></p>
+                      <p>
+                        <a
+                          href={t.contact.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-blue-600 hover:text-blue-800 underline break-all"
+                        >
+                          {t.contact.website}
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.linkedin.com/in/ricardo-voegeli/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-blue-600 hover:text-blue-800 underline break-all"
+                        >
+                          {t.contact.linkedin}
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://github.com/risuiar"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-blue-600 hover:text-blue-800 underline break-all"
+                        >
+                          {t.contact.github}
+                        </a>
+                      </p>
+                      <p class="mt-3 hidden" id="extended-cv-link">
+                        <a
+                          href={t.contact.extendedCvUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-blue-600 hover:text-blue-800 underline break-all font-medium"
+                          download
+                        >
+                          {t.contact.extendedCv}
+                        </a>
+                      </p>
+                    </div>
                   </div>
-                ))
-              }
-            </div>
-          </div>
 
-          <!-- Technische Expertise -->
-          <div class="section-item section-spacing">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.technicalExpertise}
-            </h2>
-            <div class="space-y-3 text-xs text-slate-700 leading-relaxed">
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.frontend}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >React</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >TypeScript</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >JavaScript</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >HTML5</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >CSS3</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >Tailwind</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
-                    >MUI</span
-                  >
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.state}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
-                    >Redux</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
-                    >React Query</span
-                  >
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.tools}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
-                    >Webpack</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
-                    >Vite</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
-                    >Git</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
-                    >CI/CD</span
-                  >
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.testing}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
-                    >Cypress</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
-                    >Jest</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
-                    >Playwright</span
-                  >
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.backend}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
-                    >PHP</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
-                    >Node.js</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
-                    >Laravel</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
-                    >Symfony</span
-                  >
-                </div>
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.technicalExpertise.databases}</span
-                >
-                <div class="flex flex-wrap gap-1 mt-1">
-                  <span
-                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
-                    >MySQL</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
-                    >PostgreSQL</span
-                  >
-                  <span
-                    class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
-                    >Redis</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+                  <!-- Highlights -->
+                  <div class="section-item section-spacing">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.highlights}
+                    </h2>
+                    <div class="space-y-2 text-xs text-slate-700">
+                      {
+                        t.highlights.map((highlight) => (
+                          <div class="flex items-start">
+                            <span class="text-blue-600 mr-2">●</span>
+                            <span>{highlight}</span>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </div>
 
-          <!-- Sprachen -->
-          <div class="section-item">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.languages}
-            </h2>
-            <div class="space-y-2 text-xs text-slate-700">
-              <div class="flex justify-between">
-                <span>{t.languages.german}</span>
-                <span class="text-slate-500">B2</span>
-              </div>
-              <div class="flex justify-between">
-                <span>{t.languages.english}</span>
-                <span class="text-slate-500">B2</span>
-              </div>
-              <div class="flex justify-between">
-                <span>{t.languages.spanish}</span>
-                <span class="text-slate-500">{t.languages.native}</span>
-              </div>
-              <div class="flex justify-between">
-                <span>{t.languages.portuguese}</span>
-                <span class="text-slate-500">B1</span>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <!-- Technische Expertise -->
+                  <div class="section-item section-spacing">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.technicalExpertise}
+                    </h2>
+                    <div
+                      class="space-y-3 text-xs text-slate-700 leading-relaxed"
+                    >
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.frontend}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >React</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >TypeScript</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >JavaScript</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >HTML5</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >CSS3</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >Tailwind</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-[10px]"
+                            >MUI</span
+                          >
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.state}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
+                            >Redux</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]"
+                            >React Query</span
+                          >
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.tools}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                            >Webpack</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                            >Vite</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                            >Git</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]"
+                            >CI/CD</span
+                          >
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.testing}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                            >Cypress</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                            >Jest</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px]"
+                            >Playwright</span
+                          >
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.backend}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                            >PHP</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                            >Node.js</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                            >Laravel</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-[10px]"
+                            >Symfony</span
+                          >
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.technicalExpertise.databases}</span
+                        >
+                        <div class="flex flex-wrap gap-1 mt-1">
+                          <span
+                            class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                            >MySQL</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                            >PostgreSQL</span
+                          >
+                          <span
+                            class="skill-tag inline-block bg-red-100 text-red-800 px-2 py-0.5 rounded text-[10px]"
+                            >Redis</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-        <!-- RIGHT COLUMN -->
-        <div class="right-column-padding">
-          <!-- Über mich -->
-          <div class="section-item section-spacing">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.aboutMe}
-            </h2>
-            <p class="text-xs text-slate-700 leading-relaxed">
-              <span set:html={t.aboutMe.paragraph1} />
-              {
-                "paragraph2" in t.aboutMe && (
-                  <>
-                    <br />
-                    {t.aboutMe.paragraph2}
-                  </>
-                )
-              }
-            </p>
-          </div>
+                  <!-- Sprachen -->
+                  <div class="section-item">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.languages}
+                    </h2>
+                    <div class="space-y-2 text-xs text-slate-700">
+                      <div class="flex justify-between">
+                        <span>{t.languages.german}</span>
+                        <span class="text-slate-500">B2</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>{t.languages.english}</span>
+                        <span class="text-slate-500">B2</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>{t.languages.spanish}</span>
+                        <span class="text-slate-500">{t.languages.native}</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>{t.languages.portuguese}</span>
+                        <span class="text-slate-500">B1</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          {
-            /*<!-- Kurzprofil -->
+                <!-- RIGHT COLUMN -->
+                <div class="right-column-padding">
+                  <!-- Über mich -->
+                  <div class="section-item section-spacing">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.aboutMe}
+                    </h2>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                      <span set:html={t.aboutMe.paragraph1} />
+                      {
+                        "paragraph2" in t.aboutMe && (
+                          <>
+                            <br />
+                            {t.aboutMe.paragraph2}
+                          </>
+                        )
+                      }
+                    </p>
+                  </div>
+
+                  {
+                    /*<!-- Kurzprofil -->
           <div class="section-item section-spacing">
             <h2
               class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
@@ -364,159 +382,184 @@ const contactData = getContactData(false); // Start with safe data
               }
             </div>
           </div>*/
-          }
+                  }
 
-          <!-- Berufserfahrung -->
-          <div class="section-spacing">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.workExperience}
-            </h2>
+                  <!-- Berufserfahrung -->
+                  <div class="section-spacing">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.workExperience}
+                    </h2>
 
-            <!-- Job 1 -->
-            <div class="job-item section-item">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xs font-bold text-slate-800">
-                  {t.workExperience.freelance.title}
-                </h3>
-                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
-                  >{t.workExperience.freelance.period}</span
-                >
-              </div>
-              <div class="text-xs text-slate-700 leading-relaxed space-y-2">
-                <p>
-                  {t.workExperience.freelance.description1}
-                </p>
-                <p>
-                  {t.workExperience.freelance.description2}
-                </p>
-                <div class="pl-3 border-l-2 border-blue-200 space-y-1">
-                  <p class="font-semibold text-slate-800">
-                    {t.workExperience.freelance.mainProject}
-                  </p>
-                  <ul class="space-y-1 list-none">
-                    {
-                      t.workExperience.freelance.mainProjectItems.map(
-                        (item) => (
-                          <li class="flex items-start">
-                            <span class="text-blue-600 mr-2 text-[8px] mt-1">
-                              ▸
-                            </span>
-                            <span>{item}</span>
-                          </li>
-                        )
-                      )
-                    }
-                  </ul>
+                    <!-- Job 1 -->
+                    <div class="job-item section-item">
+                      <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xs font-bold text-slate-800">
+                          {t.workExperience.freelance.title}
+                        </h3>
+                        <span
+                          class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                          >{t.workExperience.freelance.period}</span
+                        >
+                      </div>
+                      <div
+                        class="text-xs text-slate-700 leading-relaxed space-y-2"
+                      >
+                        <p>
+                          {t.workExperience.freelance.description1}
+                        </p>
+                        <p>
+                          {t.workExperience.freelance.description2}
+                        </p>
+                        <div class="pl-3 border-l-2 border-blue-200 space-y-1">
+                          <p class="font-semibold text-slate-800">
+                            {t.workExperience.freelance.mainProject}
+                          </p>
+                          <ul class="space-y-1 list-none">
+                            {
+                              t.workExperience.freelance.mainProjectItems.map(
+                                (item) => (
+                                  <li class="flex items-start">
+                                    <span class="text-blue-600 mr-2 text-[8px] mt-1">
+                                      ▸
+                                    </span>
+                                    <span>{item}</span>
+                                  </li>
+                                )
+                              )
+                            }
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="job-item section-item">
+                      <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xs font-bold text-slate-800">
+                          {t.workExperience.skycell.title}
+                        </h3>
+                        <span
+                          class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                          >{t.workExperience.skycell.period}</span
+                        >
+                      </div>
+                      <ul
+                        class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
+                      >
+                        {
+                          t.workExperience.skycell.items.map((item) => (
+                            <li class="flex items-start">
+                              <span class="text-blue-600 mr-2 text-[8px] mt-1">
+                                ▸
+                              </span>
+                              <span set:html={item} />
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="job-item section-item">
+                      <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xs font-bold text-slate-800">
+                          {t.workExperience.navyboot.title}
+                        </h3>
+                        <span
+                          class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
+                          >{t.workExperience.navyboot.period}</span
+                        >
+                      </div>
+                      <ul
+                        class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
+                      >
+                        {
+                          t.workExperience.navyboot.items.map((item) => (
+                            <li class="flex items-start">
+                              <span class="text-blue-600 mr-2 text-[8px] mt-1">
+                                ▸
+                              </span>
+                              <span set:html={item} />
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+
+                    <!-- Job 4 -->
+                    <div class="section-item">
+                      <h3 class="text-xs font-bold text-slate-800 mb-2">
+                        {t.workExperience.olderExperience.title}
+                      </h3>
+                      <div
+                        class="text-xs text-slate-700 leading-relaxed space-y-2"
+                      >
+                        <div>
+                          <span class="font-semibold text-slate-800"
+                            >{t.workExperience.olderExperience.epets}</span
+                          >
+                          <span>
+                            {t.workExperience.olderExperience.epetsDesc}</span
+                          >
+                        </div>
+                        <div>
+                          <span class="font-semibold text-slate-800"
+                            >{t.workExperience.olderExperience.car4you}</span
+                          >
+                          <span>
+                            {t.workExperience.olderExperience.car4youDesc}</span
+                          >
+                        </div>
+                        <div>
+                          <span class="font-semibold text-slate-800"
+                            >{
+                              t.workExperience.olderExperience.surfkitchen
+                            }</span
+                          >
+                          <span>
+                            {
+                              t.workExperience.olderExperience.surfkitchenDesc
+                            }</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Ausbildung -->
+                  <div class="section-item">
+                    <h2
+                      class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
+                    >
+                      {t.sections.education}
+                    </h2>
+                    <div class="space-y-2 text-xs text-slate-700">
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.education.casAdvanced}</span
+                        >
+                        <span class="text-slate-500"
+                          >{t.education.casAdvancedPeriod}</span
+                        >
+                      </div>
+                      <div>
+                        <span class="font-semibold text-slate-800"
+                          >{t.education.cas}</span
+                        >
+                        <span class="text-slate-500"
+                          >{t.education.casPeriod}</span
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Job 2 -->
-            <div class="job-item section-item">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xs font-bold text-slate-800">
-                  {t.workExperience.skycell.title}
-                </h3>
-                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
-                  >{t.workExperience.skycell.period}</span
-                >
-              </div>
-              <ul
-                class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
-              >
-                {
-                  t.workExperience.skycell.items.map((item) => (
-                    <li class="flex items-start">
-                      <span class="text-blue-600 mr-2 text-[8px] mt-1">▸</span>
-                      <span set:html={item} />
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-
-            <!-- Job 3 -->
-            <div class="job-item section-item">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xs font-bold text-slate-800">
-                  {t.workExperience.navyboot.title}
-                </h3>
-                <span class="text-[10px] text-slate-500 whitespace-nowrap ml-2"
-                  >{t.workExperience.navyboot.period}</span
-                >
-              </div>
-              <ul
-                class="text-xs text-slate-700 leading-relaxed space-y-1 list-none"
-              >
-                {
-                  t.workExperience.navyboot.items.map((item) => (
-                    <li class="flex items-start">
-                      <span class="text-blue-600 mr-2 text-[8px] mt-1">▸</span>
-                      <span set:html={item} />
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-
-            <!-- Job 4 -->
-            <div class="section-item">
-              <h3 class="text-xs font-bold text-slate-800 mb-2">
-                {t.workExperience.olderExperience.title}
-              </h3>
-              <div class="text-xs text-slate-700 leading-relaxed space-y-2">
-                <div>
-                  <span class="font-semibold text-slate-800"
-                    >{t.workExperience.olderExperience.epets}</span
-                  >
-                  <span> {t.workExperience.olderExperience.epetsDesc}</span>
-                </div>
-                <div>
-                  <span class="font-semibold text-slate-800"
-                    >{t.workExperience.olderExperience.car4you}</span
-                  >
-                  <span> {t.workExperience.olderExperience.car4youDesc}</span>
-                </div>
-                <div>
-                  <span class="font-semibold text-slate-800"
-                    >{t.workExperience.olderExperience.surfkitchen}</span
-                  >
-                  <span>
-                    {t.workExperience.olderExperience.surfkitchenDesc}</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ausbildung -->
-          <div class="section-item">
-            <h2
-              class="section-title text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 pb-2 border-b-2 border-blue-600"
-            >
-              {t.sections.education}
-            </h2>
-            <div class="space-y-2 text-xs text-slate-700">
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.education.casAdvanced}</span
-                >
-                <span class="text-slate-500"
-                  >{t.education.casAdvancedPeriod}</span
-                >
-              </div>
-              <div>
-                <span class="font-semibold text-slate-800"
-                  >{t.education.cas}</span
-                >
-                <span class="text-slate-500">{t.education.casPeriod}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <style is:global>
@@ -794,6 +837,26 @@ const contactData = getContactData(false); // Start with safe data
         }
       }
 
+      /* Table wrapper for print layout */
+      .print-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      @media screen {
+        /* Reset table display for screen to maintain original layout */
+        .print-table,
+        .print-tbody,
+        .print-row,
+        .print-cell {
+          display: block;
+        }
+
+        .print-header {
+          display: none;
+        }
+      }
+
       @media print {
         body {
           background: white !important;
@@ -807,7 +870,39 @@ const contactData = getContactData(false); // Start with safe data
           padding: 0 !important;
         }
 
-        .page > .grid {
+        /* Enforce table display for print */
+        .print-table {
+          display: table !important;
+          margin-top: -15mm !important; /* Pull up to hide spacer on Page 1 behind the main header */
+        }
+
+        .print-header {
+          display: table-header-group !important;
+        }
+
+        .print-spacer {
+          display: flex !important;
+          height: 15mm;
+          width: 100%;
+        }
+
+        .print-spacer-left {
+          width: 280px !important;
+          background-color: #f8fafc !important; /* slate-50 */
+          border-right: 1px solid #e2e8f0 !important; /* slate-200 */
+          box-sizing: border-box !important;
+          flex-shrink: 0 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .print-spacer-right {
+          flex: 1 !important;
+          background-color: white !important;
+        }
+
+        /* Updated selector since grid is no longer direct child */
+        .page .grid {
           display: grid !important;
           grid-template-columns: 280px 1fr !important;
           gap: 0 !important;
@@ -819,6 +914,8 @@ const contactData = getContactData(false); // Start with safe data
 
         .header-padding {
           padding: var(--spacing-lg) var(--spacing-lg) !important;
+          position: relative !important;
+          z-index: 20 !important; /* Ensure it covers the spacer on Page 1 */
         }
 
         .left-column-padding,
@@ -912,7 +1009,12 @@ const contactData = getContactData(false); // Start with safe data
         }
 
         @page {
-          margin: 0;
+          margin: 0 !important;
+        }
+
+        /* Ensure first page overrides if necessary, though simpler is better */
+        @page :first {
+          margin-top: 0 !important;
         }
       }
     </style>
