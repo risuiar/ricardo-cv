@@ -22,6 +22,7 @@ export const translations = {
   contact: {
     get address() { return import.meta.env.PUBLIC_CONTACT_ADDRESS || ''; },
     get city() { return import.meta.env.PUBLIC_CONTACT_CITY || ''; },
+    nationality: 'Nationality: Swiss / Argentine',
     get email() { return import.meta.env.PUBLIC_CONTACT_EMAIL || ''; },
     get phone() { return import.meta.env.PUBLIC_CONTACT_PHONE || ''; },
     linkedin: 'LinkedIn',
@@ -56,7 +57,7 @@ export const translations = {
     native: 'Native'
   },
   aboutMe: {
-    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience in software engineering, I combine modern web technology with the pragmatic troubleshooting skills of an IT Allrounder.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience and solid further education at HSR and OST (two CAS degrees), I combine modern web technology with the pragmatic troubleshooting skills of an IT all-rounder.',
     paragraph2: 'I prioritize clean architecture, performance, and sustainable solutions. Zurich has been my home for over 20 years, and I am looking for a long-term commitment where I can add value through my experience and hands-on mentality.'
   },
   shortProfile: {
@@ -74,7 +75,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Lead Full Stack Developer',
+      title: 'Lead Full Stack Developer (Freelance Project)',
       period: '12.2024 – Present',
       description1: 'Development of modern full-stack projects using Astro, Tailwind, React, Laravel and Supabase. Focus on architecture, performance and scalable UI components. Responsible for planning, technical decisions and full end-to-end implementation.',
       description2: 'Responsible for architecture, planning, development and continuous improvement.',

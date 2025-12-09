@@ -22,6 +22,7 @@ export const translations = {
   contact: {
     get address() { return import.meta.env.PUBLIC_CONTACT_ADDRESS || ''; },
     get city() { return import.meta.env.PUBLIC_CONTACT_CITY || ''; },
+    nationality: 'Nacionalidad: Suiza / Argentina',
     get email() { return import.meta.env.PUBLIC_CONTACT_EMAIL || ''; },
     get phone() { return import.meta.env.PUBLIC_CONTACT_PHONE || ''; },
     linkedin: 'LinkedIn',
@@ -56,7 +57,7 @@ export const translations = {
     native: 'Nativo'
   },
   aboutMe: {
-    paragraph1: '<strong>Senior Frontend Engineer & Especialista en IT</strong> Desarrollador apasionado con enfoque en React, Next.js y Pixel-Perfect UI. Con más de 20 años de experiencia en ingeniería de software, combino tecnología web moderna con la capacidad pragmática de resolución de problemas de un perfil generalista (IT Allrounder).',
+    paragraph1: '<strong>Senior Frontend Engineer & Especialista en IT</strong> Desarrollador apasionado con enfoque en React, Next.js y Pixel-Perfect UI. Con más de 20 años de experiencia y una sólida formación continua en HSR y OST (dos títulos CAS), combino la tecnología web moderna con la capacidad pragmática de resolución de problemas de un especialista en IT.',
     paragraph2: 'Priorizo la arquitectura limpia, el rendimiento y las soluciones sostenibles. Zúrich ha sido mi hogar durante más de 20 años y busco un compromiso a largo plazo donde pueda aportar valor con mi experiencia y mentalidad práctica.'
   },
   shortProfile: {
@@ -74,7 +75,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Desarrollador Full Stack Lead',
+      title: 'Desarrollador Full Stack Lead (Proyecto Freelance)',
       period: '12.2024 – presente',
       description1: 'Desarrollo de proyectos Fullstack modernos con Astro, Tailwind, React, Laravel y Supabase. Enfoque en arquitectura, rendimiento y componentes UI escalables. Responsable de la planificación, decisiones técnicas y la implementación completa de cada proyecto.',
       description2: 'Responsable de la arquitectura, planificación, desarrollo y mejora continua.',

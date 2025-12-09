@@ -22,6 +22,7 @@ export const translations = {
   contact: {
     get address() { return import.meta.env.PUBLIC_CONTACT_ADDRESS || ''; },
     get city() { return import.meta.env.PUBLIC_CONTACT_CITY || ''; },
+    nationality: 'Nationalität: Schweiz / Argentinien',
     get email() { return import.meta.env.PUBLIC_CONTACT_EMAIL || ''; },
     get phone() { return import.meta.env.PUBLIC_CONTACT_PHONE || ''; },
     linkedin: 'LinkedIn',
@@ -59,7 +60,7 @@ export const translations = {
     // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
     // paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
     // paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
-    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> Leidenschaftlicher Entwickler mit Fokus auf React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung im Software-Engineering kombiniere ich moderne Web-Technologie mit der pragmatischen Troubleshooting-Kompetenz eines IT-Allrounders.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> Leidenschaftlicher Entwickler mit Fokus auf React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung und fundierter Weiterbildung an der HSR und OST (zwei CAS-Abschlüsse) kombiniere ich moderne Web-Technologie mit der pragmatischen Troubleshooting-Kompetenz eines IT-Allrounders.',
     paragraph2: 'Ich priorisiere saubere Architektur, Performance und nachhaltige Lösungen. Zürich ist seit über 20 Jahren mein Zuhause und ich suche ein langfristiges Engagement, bei dem ich meine Erfahrung und meine Hands-on-Mentalität gewinnbringend einbringen kann.',
   },
   shortProfile: {
@@ -77,7 +78,7 @@ export const translations = {
   },
   workExperience: {
     freelance: {
-      title: 'Lead Full Stack Developer',
+      title: 'Lead Full Stack Developer (Freelance Projekt)',
       period: '12.2024 – heute',
       description1: 'Entwicklung moderner Fullstack-Projekte mit Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
       description2: 'Verantwortlich für Architektur, Planung, Umsetzung und kontinuierliche Verbesserung.',
