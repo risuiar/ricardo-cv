@@ -1,0 +1,108 @@
+---
+import { getTranslations, type Lang, languages } from "../../i18n";
+import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
+
+export async function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { lang: lang.code },
+  }));
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang as Lang);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{t.drivingLicense.pageTitle}</title>
+    <meta name="description" content={t.drivingLicense.title} />
+  </head>
+  <body class="bg-gray-50">
+    <LanguageSwitcher currentLang={lang as Lang} />
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+        <h1 class="text-3xl font-bold text-slate-800 mb-6 text-center">
+          {t.drivingLicense.title}
+        </h1>
+        
+        <div class="space-y-6">
+          <div class="flex flex-col items-center">
+            <img
+              src="/WhatsApp Image 2025-12-11 at 08.03.21.jpeg"
+              alt={t.drivingLicense.title}
+              class="max-w-full h-auto rounded-lg shadow-md"
+            />
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <img
+              src="/WhatsApp Image 2025-12-11 at 08.03.21 (1).jpeg"
+              alt={t.drivingLicense.title}
+              class="max-w-full h-auto rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a
+            href={`/${lang}/`}
+            class="inline-block text-blue-600 hover:text-blue-800 underline"
+          >
+            ← {lang === 'de' ? 'Zurück zum CV' : lang === 'es' ? 'Volver al CV' : 'Back to CV'}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <style is:global>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media print {
+        body {
+          background: white !important;
+        }
+
+        .max-w-4xl {
+          max-width: 100% !important;
+        }
+
+        .shadow-lg {
+          box-shadow: none !important;
+        }
+
+        .rounded-lg {
+          border-radius: 0 !important;
+        }
+      }
+    </style>
+  </body>
+</html>
+
+

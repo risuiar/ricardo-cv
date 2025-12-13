@@ -138,6 +138,10 @@ export const translations = {
     print: 'Drucken',
     save: 'Speichern',
     saved: 'Gespeichert!'
+  },
+  drivingLicense: {
+    pageTitle: 'Führerschein – Ricardo Vögeli',
+    title: 'Führerschein'
   }
 } as const;
 

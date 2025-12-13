@@ -135,6 +135,10 @@ export const translations = {
     print: 'Imprimir',
     save: 'Guardar',
     saved: '¡Guardado!'
+  },
+  drivingLicense: {
+    pageTitle: 'Licencia de Conducir – Ricardo Vögeli',
+    title: 'Licencia de Conducir'
   }
 } as const;
 

@@ -135,6 +135,10 @@ export const translations = {
     print: 'Print',
     save: 'Save',
     saved: 'Saved!'
+  },
+  drivingLicense: {
+    pageTitle: 'Driving License – Ricardo Vögeli',
+    title: 'Driving License'
   }
 } as const;
 

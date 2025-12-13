@@ -564,106 +564,7 @@ const contactData = getContactData(false); // Start with safe data
     </div>
 
     <style is:global>
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-      }
-
-      body {
-        overflow-x: hidden;
-      }
-
-      .page {
-        margin-top: 0 !important;
-        margin-bottom: 0;
-      }
-
-      :root {
-        --spacing-xs: 0.5rem; /* 8px - móvil pequeño */
-        --spacing-sm: 0.75rem; /* 12px - móvil */
-        --spacing-md: 1rem; /* 16px - móvil/tablet */
-        --spacing-lg: 1.5rem; /* 24px - tablet */
-        --spacing-xl: 2rem; /* 32px - desktop */
-        --spacing-2xl: 2.5rem; /* 40px - desktop */
-
-        --padding-page-mobile: var(--spacing-sm);
-        --padding-page-tablet: var(--spacing-md);
-        --padding-page-desktop: var(--spacing-2xl);
-
-        --padding-section-mobile: var(--spacing-xs);
-        --padding-section-tablet: var(--spacing-sm);
-        --padding-section-desktop: var(--spacing-md);
-
-        --padding-contact-mobile: 0.25rem; /* 4px - muy pequeño en móvil */
-        --padding-contact-tablet: var(--spacing-xs);
-        --padding-contact-desktop: var(--spacing-sm);
-      }
-
-      @page {
-        size: A4;
-        margin: 0;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .animate-fade-in {
-        animation: fadeIn 0.6s ease-out forwards;
-      }
-
-      .animate-slide-in {
-        animation: slideIn 0.8s ease-out forwards;
-      }
-
-      .section-item {
-        opacity: 0;
-        animation: fadeIn 0.6s ease-out forwards;
-      }
-
-      .section-item:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-
-      .section-item:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-
-      .section-item:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-
-      .section-item:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-
-      .section-item:nth-child(5) {
-        animation-delay: 0.5s;
-      }
+      @import "../../styles/shared-print.css";
 
       .skill-tag {
         transition: all 0.3s ease;
@@ -700,109 +601,10 @@ const contactData = getContactData(false); // Start with safe data
         }
       }
 
-      .section-title {
-        position: relative;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #2563eb, #3b82f6);
-        transition: width 0.6s ease;
-      }
-
-      .section-title.active::after {
-        width: 100%;
-      }
-
       @media (max-width: 767px) {
-        .page {
-          max-width: 100%;
-          margin: 0;
-          box-shadow: none;
-          min-height: auto;
-        }
-
-        body {
-          background: white;
-        }
-
-        .section-item {
-          margin-bottom: 1.5rem;
-        }
-
         .skill-tag {
           font-size: 11px;
           padding: 4px 8px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .page {
-          margin: 0 auto;
-        }
-      }
-
-      /* Spacing utilities using CSS variables */
-      .header-padding {
-        padding: var(--spacing-sm) var(--padding-page-mobile);
-      }
-
-      @media (min-width: 640px) {
-        .header-padding {
-          padding: var(--spacing-md) var(--padding-page-tablet);
-        }
-      }
-
-      @media (min-width: 768px) {
-        .header-padding {
-          padding: var(--spacing-lg) var(--spacing-lg);
-        }
-      }
-
-      .left-column-padding,
-      .right-column-padding {
-        padding: var(--padding-section-mobile);
-      }
-
-      @media (min-width: 640px) {
-        .left-column-padding,
-        .right-column-padding {
-          padding: var(--padding-section-tablet);
-        }
-      }
-
-      @media (min-width: 768px) {
-        .left-column-padding,
-        .right-column-padding {
-          padding: var(--padding-section-desktop);
-        }
-      }
-
-      .contact-section {
-        margin-bottom: var(--spacing-md);
-      }
-
-      .contact-content {
-        padding-top: var(--padding-contact-mobile);
-      }
-
-      @media (min-width: 640px) {
-        .contact-content {
-          padding-top: var(--padding-contact-tablet);
-        }
-      }
-
-      @media (min-width: 768px) {
-        .contact-content {
-          padding-top: var(--padding-contact-desktop);
-        }
-        .contact-section {
-          margin-bottom: var(--spacing-2xl);
         }
       }
 
@@ -826,52 +628,51 @@ const contactData = getContactData(false); // Start with safe data
         }
       }
 
-      .section-title-spacing {
-        margin-bottom: var(--spacing-sm);
-        padding-bottom: var(--spacing-xs);
-      }
-
-      @media (min-width: 768px) {
-        .section-title-spacing {
-          margin-bottom: var(--spacing-md);
-          padding-bottom: var(--spacing-xs);
-        }
-      }
-
-      /* Table wrapper for print layout */
-      .print-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      @media screen {
-        /* Reset table display for screen to maintain original layout */
-        .print-table,
-        .print-tbody,
-        .print-row,
-        .print-cell {
-          display: block;
+      /* Print Table Hack - Only for CV */
+      @media print {
+        .print-table {
+          display: table;
+          width: 100%;
+          border-collapse: collapse;
         }
 
         .print-header {
-          display: none;
-        }
-      }
-
-      @media print {
-        body {
-          background: white !important;
+          display: table-header-group;
         }
 
-        .page {
-          width: 210mm !important;
-          min-height: 297mm !important;
-          box-shadow: none !important;
-          margin: 0 !important;
-          padding: 0 !important;
+        .print-tbody {
+          display: table-row-group;
         }
 
-        /* Enforce table display for print */
+        .print-row {
+          display: table-row;
+        }
+
+        .print-cell {
+          display: table-cell;
+        }
+
+        .print-spacer {
+          height: 30px; /* Spacer height for subsequent pages */
+          display: grid;
+          grid-template-columns: 280px 1fr !important;
+          gap: 0;
+        }
+
+        .print-spacer-left {
+          background-color: #f8fafc; /* match slate-50 */
+          border-right: 1px solid #e2e8f0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .print-spacer-right {
+          background-color: white;
+          width: 100%;
+          height: 100%;
+        }
+
+        /* CV Specific Print Overrides */
         .print-table {
           display: table !important;
           margin-top: -15mm !important; /* Pull up to hide spacer on Page 1 behind the main header */
@@ -902,37 +703,10 @@ const contactData = getContactData(false); // Start with safe data
           background-color: white !important;
         }
 
-        /* Updated selector since grid is no longer direct child */
-        .page .grid {
-          display: grid !important;
-          grid-template-columns: 280px 1fr !important;
-          gap: 0 !important;
-        }
-
-        .left-column-padding {
-          border-right: 1px solid #e2e8f0 !important;
-        }
-
         .header-padding {
           padding: var(--spacing-lg) var(--spacing-lg) !important;
           position: relative !important;
           z-index: 20 !important; /* Ensure it covers the spacer on Page 1 */
-        }
-
-        .left-column-padding,
-        .right-column-padding {
-          padding: var(--padding-page-desktop) !important;
-        }
-
-        .right-column-padding {
-          border-left: none !important;
-        }
-
-        .animate-fade-in,
-        .animate-slide-in,
-        .section-item {
-          animation: none !important;
-          opacity: 1 !important;
         }
 
         .profile-photo {
@@ -971,8 +745,6 @@ const contactData = getContactData(false); // Start with safe data
           line-height: 1.25 !important;
         }
 
-        .grid .section-item,
-        .contact-section,
         .job-item {
           page-break-inside: avoid;
           break-inside: avoid;
@@ -983,37 +755,6 @@ const contactData = getContactData(false); // Start with safe data
           box-shadow: none !important;
         }
 
-        /* Avoid splitting important blocks across pages */
-        h1,
-        h2,
-        h3,
-        .section,
-        .left,
-        .right,
-        .container {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-
-        .page {
-          page-break-inside: avoid;
-        }
-
-        h2 {
-          break-after: avoid;
-          page-break-after: avoid;
-        }
-
-        .container {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-
-        @page {
-          margin: 0 !important;
-        }
-
-        /* Ensure first page overrides if necessary, though simpler is better */
         @page :first {
           margin-top: 0 !important;
         }
@@ -1035,7 +776,7 @@ const contactData = getContactData(false); // Start with safe data
               c = document.getElementById("contact-phone"),
               i = document.getElementById("extended-cv-link"),
               d = o.data;
-            a &&
+            (a &&
               d.address &&
               ((a.textContent = d.address), a.classList.remove("hidden")),
               r && d.city && (r.textContent = d.city),
@@ -1043,7 +784,7 @@ const contactData = getContactData(false); // Start with safe data
               c &&
                 d.phone &&
                 ((c.textContent = d.phone), c.classList.remove("hidden")),
-              i && i.classList.remove("hidden");
+              i && i.classList.remove("hidden"));
           } catch (t) {}
         }
         document.readyState === "loading"
