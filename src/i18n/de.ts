@@ -54,7 +54,10 @@ export const translations = {
     english: 'Englisch',
     spanish: 'Spanisch',
     portuguese: 'Portugiesisch',
-    native: 'Muttersprache'
+    native: 'Muttersprache',
+    professional: 'Fliessend',
+    b1: 'B1',
+    b2: 'B2'
   },
   aboutMe: {
     // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
@@ -80,10 +83,11 @@ export const translations = {
     freelance: {
       title: 'Lead Full Stack Developer (Freelance Projekt)',
       period: '12.2024 – heute',
-      description1: 'Entwicklung moderner Fullstack-Projekte mit Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
+      description1: 'Entwicklung moderner Fullstack-Projekte mit Next.js, Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
       description2: 'Verantwortlich für Architektur, Planung, Umsetzung und kontinuierliche Verbesserung.',
       mainProject: 'Hauptprojekt: Travix (AI-gestützter Reiseplaner)',
       mainProjectItems: [
+        'Architektur einer neuen skalierbaren Webanwendung mit Next.js 14 (App Router) zur Verbesserung von SEO und Performance',
         'Architektur (React + Supabase) für eine modulare Travel-Planer-App',
         'Entwicklung des Daily Planners, Ausgabenmoduls und AI-gestützter Routenplanung',
         'Aufbau eines API-Layers, Auth-Flows und serverseitigen Sync-Mechanismen',

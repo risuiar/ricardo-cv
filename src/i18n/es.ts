@@ -54,7 +54,10 @@ export const translations = {
     english: 'Inglés',
     spanish: 'Español',
     portuguese: 'Portugués',
-    native: 'Nativo'
+    native: 'Nativo',
+    professional: 'Fluido',
+    b1: 'B1',
+    b2: 'B2'
   },
   aboutMe: {
     paragraph1: '<strong>Senior Frontend Engineer & Especialista en IT</strong> Desarrollador apasionado con enfoque en React, Next.js y Pixel-Perfect UI. Con más de 20 años de experiencia y una sólida formación continua en HSR y OST (dos títulos CAS), combino la tecnología web moderna con la capacidad pragmática de resolución de problemas de un especialista en IT.',
@@ -77,10 +80,11 @@ export const translations = {
     freelance: {
       title: 'Desarrollador Full Stack Lead (Proyecto Freelance)',
       period: '12.2024 – presente',
-      description1: 'Desarrollo de proyectos Fullstack modernos con Astro, Tailwind, React, Laravel y Supabase. Enfoque en arquitectura, rendimiento y componentes UI escalables. Responsable de la planificación, decisiones técnicas y la implementación completa de cada proyecto.',
+      description1: 'Desarrollo de proyectos Fullstack modernos con Next.js, Astro, Tailwind, React, Laravel y Supabase. Enfoque en arquitectura, rendimiento y componentes UI escalables. Responsable de la planificación, decisiones técnicas y la implementación completa de cada proyecto.',
       description2: 'Responsable de la arquitectura, planificación, desarrollo y mejora continua.',
       mainProject: 'Proyecto principal: Travix',
       mainProjectItems: [
+        'Arquitectura de una nueva aplicación web escalable utilizando Next.js 14 (App Router) para mejorar el SEO y el rendimiento',
         'Arquitectura (React + Supabase) para una app modular de planificación de viajes',
         'Desarrollo del Daily Planner, módulo de gastos y planificación de rutas asistida por IA',
         'Creación de un API-layer, flujos de autenticación y mecanismos de sincronización en servidor',
