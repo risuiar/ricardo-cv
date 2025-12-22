@@ -83,12 +83,12 @@ export const translations = {
     freelance: {
       title: 'Lead Full Stack Developer (Freelance Projekt)',
       period: '12.2024 – heute',
-      description1: 'Entwicklung moderner Fullstack-Projekte mit Next.js, Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
+      description1: 'Entwicklung moderner Fullstack-Projekte mit Astro, Tailwind, React, Laravel und Supabase. Fokus auf Architektur, Performance und skalierbare UI-Komponenten. Verantwortlich für Planung, technische Entscheidungen und End-to-End Umsetzung.',
       description2: 'Verantwortlich für Architektur, Planung, Umsetzung und kontinuierliche Verbesserung.',
       mainProject: 'Hauptprojekt: Travix (AI-gestützter Reiseplaner)',
       mainProjectItems: [
-        'Architektur einer neuen skalierbaren Webanwendung mit Next.js 14 (App Router) zur Verbesserung von SEO und Performance',
-        'Architektur (React + Supabase) für eine modulare Travel-Planer-App',
+        'Architektur einer Hochleistungs-Single-Page-Application (SPA) mit React und Vite für eine optimierte Developer Experience und extrem schnelle Ladezeiten.',
+        'Entwicklung einer modularen Client-Side-Architektur mit React und Supabase, mit Fokus auf Komponenten-Wiederverwendbarkeit und skalierbares State-Management.',
         'Entwicklung des Daily Planners, Ausgabenmoduls und AI-gestützter Routenplanung',
         'Aufbau eines API-Layers, Auth-Flows und serverseitigen Sync-Mechanismen',
         'Umsetzung eines professionellen UI/UX-Designsystems für Mobile & Desktop'
