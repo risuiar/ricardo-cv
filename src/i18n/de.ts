@@ -60,11 +60,8 @@ export const translations = {
     b2: 'B2'
   },
   aboutMe: {
-    // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
-    // paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
-    // paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
-    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> Leidenschaftlicher Entwickler mit Fokus auf React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung und fundierter Weiterbildung an der HSR und OST (zwei CAS-Abschlüsse) kombiniere ich moderne Web-Technologie mit der Realisierungsstärke eines erfahrenen Engineers.',
-    paragraph2: 'Ich priorisiere saubere Architektur, Performance und nachhaltige Lösungen. Zürich ist seit über 20 Jahren mein Zuhause und ich suche ein langfristiges Engagement, bei dem ich meine Erfahrung und meine Hands-on-Mentalität gewinnbringend einbringen kann.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> mit Leidenschaft für React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung und fundierter Weiterbildung an HSR und OST (zwei CAS-Abschlüsse) verbinde ich moderne Webtechnologie mit der Umsetzungskraft eines erfahrenen Ingenieurs.',
+    paragraph2: 'Mein Fokus liegt auf Clean Architecture, Performance und nachhaltigen Lösungen. Zürich ist seit über 20 Jahren mein Zuhause, und ich suche ein langfristiges Engagement, bei dem ich durch meine Erfahrung und Hands-on-Mentalität echten Mehrwert schaffen kann.',
   },
   shortProfile: {
     items: [

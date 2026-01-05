@@ -60,7 +60,7 @@ export const translations = {
     b2: 'B2'
   },
   aboutMe: {
-    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience and solid further education at HSR and OST (two CAS degrees), I combine modern web technology with the **execution power of a seasoned engineer**. I stand for clean architecture, performance, and sustainable solutions.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> passionate about React, Next.js, and Pixel-Perfect UI. With over 20 years of experience and solid further education at HSR and OST (two CAS degrees), I combine modern web technology with the execution power of a seasoned engineer.',
     paragraph2: 'I prioritize clean architecture, performance, and sustainable solutions. Zurich has been my home for over 20 years, and I am looking for a long-term commitment where I can add value through my experience and hands-on mentality.'
   },
   shortProfile: {
