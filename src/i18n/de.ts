@@ -63,7 +63,7 @@ export const translations = {
     // paragraph1: 'Senior Frontend Engineer mit Schwerpunkt React und über 20 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen. Fokus auf Performance, Architektur, Code-Qualität und nutzerzentriertem Design. Erfahrung in der engen Zusammenarbeit mit Backend-, UX-, QA- und Produktteams. Routiniert in agilen Umgebungen und in der Umsetzung von End-to-End-Features mit messbarem Geschäftsnutzen.',
     // paragraph2: 'Ich bringe eine positive, verlässliche und teamorientierte Arbeitsweise mit, und werde oft als verbindende und motivierende Kraft im Team wahrgenommen.',
     // paragraph3: 'Ich bringe eine zuverlässige, lösungsorientierte Arbeitsweise mit und suche ein Umfeld, in dem ich sowohl technisch als auch menschlich echten Mehrwert schaffen kann.'
-    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> Leidenschaftlicher Entwickler mit Fokus auf React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung und fundierter Weiterbildung an der HSR und OST (zwei CAS-Abschlüsse) kombiniere ich moderne Web-Technologie mit der pragmatischen Troubleshooting-Kompetenz eines IT-Allrounders.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT-Spezialist</strong> Leidenschaftlicher Entwickler mit Fokus auf React, Next.js und Pixel-Perfect UI. Mit über 20 Jahren Erfahrung und fundierter Weiterbildung an der HSR und OST (zwei CAS-Abschlüsse) kombiniere ich moderne Web-Technologie mit der Realisierungsstärke eines erfahrenen Engineers.',
     paragraph2: 'Ich priorisiere saubere Architektur, Performance und nachhaltige Lösungen. Zürich ist seit über 20 Jahren mein Zuhause und ich suche ein langfristiges Engagement, bei dem ich meine Erfahrung und meine Hands-on-Mentalität gewinnbringend einbringen kann.',
   },
   shortProfile: {
@@ -87,7 +87,7 @@ export const translations = {
       description2: 'Verantwortlich für Architektur, Planung, Umsetzung und kontinuierliche Verbesserung.',
       mainProject: 'Hauptprojekt: Travix (AI-gestützter Reiseplaner)',
       mainProjectItems: [
-        'Architektur einer Hochleistungs-Single-Page-Application (SPA) mit React und Vite für eine optimierte Developer Experience und extrem schnelle Ladezeiten.',
+        'Architektur einer Hochleistungs-Single-Page-Application (SPA) mit React und Vite für eine optimierte Developer Experience und extrem schnelle Ladezeiten (High Lighthouse Score / Core Web Vitals).',
         'Entwicklung einer modularen Client-Side-Architektur mit React und Supabase, mit Fokus auf Komponenten-Wiederverwendbarkeit und skalierbares State-Management.',
         'Entwicklung des Daily Planners, Ausgabenmoduls und AI-gestützter Routenplanung',
         'Aufbau eines API-Layers, Auth-Flows und serverseitigen Sync-Mechanismen',
@@ -98,7 +98,7 @@ export const translations = {
       title: 'SkyCell AG / Zürich – Frontend Engineer',
       period: '12.2018 – 11.2024',
       items: [
-        'Als einer der ersten Entwickler massgeblich am Aufbau kritischer React-Applikationen beteiligt, die heute noch genutzt werden.',
+        'Als einer der ersten Entwickler massgeblich am Aufbau der Core-Architektur beteiligt, die sich über 6 Jahre erfolgreich skalieren liess.',
         'Sicherte Code-Qualität und Team-Effizienz durch Code Reviews, Testing und wiederverwendbare Komponenten.',
         'Trieb die technische Weiterentwicklung durch Refactoring und enge API-Abstimmung mit dem Backend voran.'
       ]

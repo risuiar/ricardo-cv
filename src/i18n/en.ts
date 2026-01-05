@@ -60,7 +60,7 @@ export const translations = {
     b2: 'B2'
   },
   aboutMe: {
-    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience and solid further education at HSR and OST (two CAS degrees), I combine modern web technology with the pragmatic troubleshooting skills of an IT all-rounder.',
+    paragraph1: '<strong>Senior Frontend Engineer & IT Specialist</strong> Passionate developer focused on React, Next.js, and Pixel-Perfect UI. With over 20 years of experience and solid further education at HSR and OST (two CAS degrees), I combine modern web technology with the **execution power of a seasoned engineer**. I stand for clean architecture, performance, and sustainable solutions.',
     paragraph2: 'I prioritize clean architecture, performance, and sustainable solutions. Zurich has been my home for over 20 years, and I am looking for a long-term commitment where I can add value through my experience and hands-on mentality.'
   },
   shortProfile: {
@@ -84,7 +84,7 @@ export const translations = {
       description2: 'Responsible for architecture, planning, development and continuous improvement.',
       mainProject: 'Main Project: Travix',
       mainProjectItems: [
-        'Architecting a high-performance Single Page Application (SPA) leveraging React and Vite for optimized developer experience and lightning-fast load times.',
+        'Architecting a high-performance Single Page Application (SPA) leveraging React and Vite for optimized developer experience and lightning-fast load times **(High Lighthouse Score / Core Web Vitals)**.',
         'Engineered a modular client-side architecture with React and Supabase, prioritizing component reusability and scalable state management.',
         'Development of the Daily Planner, Expense Module and AI-powered route planning',
         'Implementation of an API layer, authentication flows and server-side sync mechanisms',
@@ -95,7 +95,7 @@ export const translations = {
       title: 'SkyCell AG / Zurich – Frontend Engineer',
       period: '12.2018 – 11.2024',
       items: [
-        'As one of the first developers, architected core React applications that remain in production today.',
+        'As one of the first developers, architected core React applications **that have successfully scaled over 6 years in production**.',
         'Ensured code quality and team efficiency through code reviews, testing, and reusable component libraries.',
         'Drove technical evolution by leading refactoring initiatives and coordinating API design with the backend team.'
       ]
