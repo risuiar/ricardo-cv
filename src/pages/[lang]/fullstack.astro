@@ -2,7 +2,7 @@
 import { getTranslations, type Lang, languages } from "../../i18n";
 import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 import CV from "../../components/CV.astro";
-import { getFrontendProfile } from "../../data/cv-data";
+import { getFullStackProfile } from "../../data/cv-data";
 
 export async function getStaticPaths() {
   return languages.map((lang) => ({
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = getTranslations(lang as Lang);
-const profile = getFrontendProfile(t);
+const profile = getFullStackProfile(t);
 ---
 
 <!doctype html>
@@ -26,7 +26,7 @@ const profile = getFrontendProfile(t);
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>{t.meta.title}</title>
+    <title>{t.meta.title} - Full Stack</title>
     <meta name="description" content={t.meta.description} />
   </head>
   <body class="bg-gray-50">

@@ -2,7 +2,7 @@ import { translations as de } from './de';
 import { translations as en } from './en';
 import { translations as es } from './es';
 
-export type Translations = typeof de;
+export type Translations = typeof de | typeof en | typeof es;
 export type Lang = 'de' | 'en' | 'es';
 
 export const languages: { code: Lang; name: string; nativeName: string }[] = [
